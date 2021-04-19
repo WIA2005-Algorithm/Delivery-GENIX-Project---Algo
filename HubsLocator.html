@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_813feabc7d0f42ab9524881059fd7986 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_813feabc7d0f42ab9524881059fd7986" ></div>
+        
+</body>
+<script>    
+    
+            var map_813feabc7d0f42ab9524881059fd7986 = L.map(
+                "map_813feabc7d0f42ab9524881059fd7986",
+                {
+                    center: [3.139, 101.6869],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d8321f88d64f471bb9bfe088e980e603 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_813feabc7d0f42ab9524881059fd7986);
+        
+    
+            var marker_071c1924193549bdab67ce4397a3f749 = L.marker(
+                [3.0319924887507144, 101.37344116244806],
+                {}
+            ).addTo(map_813feabc7d0f42ab9524881059fd7986);
+        
+    
+            var icon_97754a3247e2473c85901fcf34ccf6ee = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_071c1924193549bdab67ce4397a3f749.setIcon(icon_97754a3247e2473c85901fcf34ccf6ee);
+        
+    
+        var popup_6cebfbe31451497cb89a855f42b49b4b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ba307614965543bebe2a17a62b073553 = $(`<div id="html_ba307614965543bebe2a17a62b073553" style="width: 100.0%; height: 100.0%;"><div style='width: max-content;text-align: center; font-weight: bold'>Port Klang - City-link Express</div></div>`)[0];
+            popup_6cebfbe31451497cb89a855f42b49b4b.setContent(html_ba307614965543bebe2a17a62b073553);
+        
+
+        marker_071c1924193549bdab67ce4397a3f749.bindPopup(popup_6cebfbe31451497cb89a855f42b49b4b)
+        ;
+
+        
+    
+    
+            marker_071c1924193549bdab67ce4397a3f749.bindTooltip(
+                `<div>
+                     HUB - City-link Express
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_af39a60262bd4ec4a59d0f85f0eb933d = L.marker(
+                [3.112924170027219, 101.63982650389863],
+                {}
+            ).addTo(map_813feabc7d0f42ab9524881059fd7986);
+        
+    
+            var icon_fe566a1da4ac48c993b68ba0004882c4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_af39a60262bd4ec4a59d0f85f0eb933d.setIcon(icon_fe566a1da4ac48c993b68ba0004882c4);
+        
+    
+        var popup_ceb81d999dd94cfab2a3ecc587e153a7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2100632c39c648d3b661f58784844e66 = $(`<div id="html_2100632c39c648d3b661f58784844e66" style="width: 100.0%; height: 100.0%;"><div style='width: max-content;text-align: center; font-weight: bold'>Petaling Jaya - Pos Laju</div></div>`)[0];
+            popup_ceb81d999dd94cfab2a3ecc587e153a7.setContent(html_2100632c39c648d3b661f58784844e66);
+        
+
+        marker_af39a60262bd4ec4a59d0f85f0eb933d.bindPopup(popup_ceb81d999dd94cfab2a3ecc587e153a7)
+        ;
+
+        
+    
+    
+            marker_af39a60262bd4ec4a59d0f85f0eb933d.bindTooltip(
+                `<div>
+                     HUB - Pos Laju
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7231216b3624157becdac1929afb8fd = L.marker(
+                [3.265154613796736, 101.68024844550233],
+                {}
+            ).addTo(map_813feabc7d0f42ab9524881059fd7986);
+        
+    
+            var icon_f599e3addd1847ef9d9d54c5e260c609 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "black", "prefix": "fa"}
+            );
+            marker_e7231216b3624157becdac1929afb8fd.setIcon(icon_f599e3addd1847ef9d9d54c5e260c609);
+        
+    
+        var popup_5a2087b8f36f4509a0228a08fef3e3e1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a63460b75f6646fcb02e88683b482ece = $(`<div id="html_a63460b75f6646fcb02e88683b482ece" style="width: 100.0%; height: 100.0%;"><div style='width: max-content;text-align: center; font-weight: bold'>Batu Caves - GDEX </div></div>`)[0];
+            popup_5a2087b8f36f4509a0228a08fef3e3e1.setContent(html_a63460b75f6646fcb02e88683b482ece);
+        
+
+        marker_e7231216b3624157becdac1929afb8fd.bindPopup(popup_5a2087b8f36f4509a0228a08fef3e3e1)
+        ;
+
+        
+    
+    
+            marker_e7231216b3624157becdac1929afb8fd.bindTooltip(
+                `<div>
+                     HUB - GDEX 
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_89d153b35c8b4410a2881722b723f533 = L.marker(
+                [2.9441205329488325, 101.7901521759029],
+                {}
+            ).addTo(map_813feabc7d0f42ab9524881059fd7986);
+        
+    
+            var icon_d5d00da9348349a3ac1481c85d04c177 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "darkblue", "prefix": "fa"}
+            );
+            marker_89d153b35c8b4410a2881722b723f533.setIcon(icon_d5d00da9348349a3ac1481c85d04c177);
+        
+    
+        var popup_587f4dff171b4c0493a5560c2fa3f90e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5137c84e351646a791a5af511ca411a7 = $(`<div id="html_5137c84e351646a791a5af511ca411a7" style="width: 100.0%; height: 100.0%;"><div style='width: max-content;text-align: center; font-weight: bold'>Kajang - J&T</div></div>`)[0];
+            popup_587f4dff171b4c0493a5560c2fa3f90e.setContent(html_5137c84e351646a791a5af511ca411a7);
+        
+
+        marker_89d153b35c8b4410a2881722b723f533.bindPopup(popup_587f4dff171b4c0493a5560c2fa3f90e)
+        ;
+
+        
+    
+    
+            marker_89d153b35c8b4410a2881722b723f533.bindTooltip(
+                `<div>
+                     HUB - J&T
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e22ca9316a6544e88262b994bac33098 = L.marker(
+                [3.2127230893650065, 101.57467295692778],
+                {}
+            ).addTo(map_813feabc7d0f42ab9524881059fd7986);
+        
+    
+            var icon_fc2bd59a243c489aa7b019c0924ec47b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "truck", "iconColor": "white", "markerColor": "purple", "prefix": "fa"}
+            );
+            marker_e22ca9316a6544e88262b994bac33098.setIcon(icon_fc2bd59a243c489aa7b019c0924ec47b);
+        
+    
+        var popup_2b54420ea8584119a30ce0dd1ecba3c9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d9768f830f5941bf8f737c98bb276f40 = $(`<div id="html_d9768f830f5941bf8f737c98bb276f40" style="width: 100.0%; height: 100.0%;"><div style='width: max-content;text-align: center; font-weight: bold'>Sungai Buloh - DHL</div></div>`)[0];
+            popup_2b54420ea8584119a30ce0dd1ecba3c9.setContent(html_d9768f830f5941bf8f737c98bb276f40);
+        
+
+        marker_e22ca9316a6544e88262b994bac33098.bindPopup(popup_2b54420ea8584119a30ce0dd1ecba3c9)
+        ;
+
+        
+    
+    
+            marker_e22ca9316a6544e88262b994bac33098.bindTooltip(
+                `<div>
+                     HUB - DHL
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
