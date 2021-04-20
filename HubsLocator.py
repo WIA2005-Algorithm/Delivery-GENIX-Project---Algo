@@ -37,6 +37,10 @@ def minimumCoordinates(origin):
     return Coordinates
 
 
+def function():
+    xoxox = [34, 345, 5, 56]
+
+
 # Type out the code to mark the origin and destination similar to above code with different icon
 def addCustomerMarkers():
     for customer, data in CustomerData.items():
