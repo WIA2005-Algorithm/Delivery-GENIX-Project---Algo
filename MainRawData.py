@@ -1,5 +1,5 @@
-import webbrowser
-import folium
+from HubsLocator import HubDeliveryMap
+from folium import plugins
 
 
 def HubLocation(hub):
@@ -36,12 +36,12 @@ CustomerData = {
     }
 }
 
+myMap1 = HubDeliveryMap(CourierCompanies=CourierCompanies, CustomerData=CustomerData)
+myMap1.addHub()
+myMap1.addPolyLines(myMap1.myMap.m1)
+myMap1.addPolyLines(myMap1.myMap.m2)
+print(myMap1)
 
-def auto_open_Map(path):
-    html_page = f'{path}'
-    myMap.save(html_page)
-    webbrowser.open(html_page, new=2)
 
 
-DEFAULT_LDN_COORDINATES = (3.1390, 101.6869)
-myMap = folium.Map(location=DEFAULT_LDN_COORDINATES, zoom_start=11)
+
