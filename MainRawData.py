@@ -37,9 +37,7 @@ CustomerData = {
 }
 
 myMap1 = HubDeliveryMap(CourierCompanies=CourierCompanies, CustomerData=CustomerData)
-myMap1.addHub()
-myMap1.addPolyLines(myMap1.myMap.m1)
-myMap1.addPolyLines(myMap1.myMap.m2)
+myMap1.MarkDirectDistance()
 print(myMap1)
 
 
