@@ -26,6 +26,16 @@ def CustomerParcel(customer, data, Position='Origin'):
     ).add_to(myMap)
 
 
+
+def CustomerParcel2(customer, data, Position='destination'):
+    folium.Marker(
+        location=data[Position]['location'],
+        popup=f"<div style='width: max-content;text-align: center; font-weight: bold'>{customer} - {data[Position]['name']}<br>({Position}) </div>",
+        tooltip=f"{Position} - {customer}",
+        icon=folium.Icon(icon='envelope', prefix='fa', color=data['icon'])
+    ).add_to(myMap)
+
+
 def minimumCoordinates(origin):
     best = 1000
     Coordinates = origin
@@ -41,9 +51,9 @@ def minimumCoordinates(origin):
 def addCustomerMarkers():
     for customer, data in CustomerData.items():
         CustomerParcel(customer, data)
-        CustomerParcel(customer, data, 'Destination')
+        CustomerParcel2(customer, data, 'Destination')
         folium.PolyLine(
-            [data['Origin']['location'], minimumCoordinates(data['Origin']['location']), data['Destination']['location']],
+            [data['Origin']['location'], data['Destination']['location']],
             color=data['icon'],
             popup=f"<div style='width: max-content;text-align: center; font-weight: bold'>{data['Origin']['name']} to {data['Destination']['name']}<br>({geodesic(data['Origin']['location'], data['Destination']['location']).kilometers:.2f} Km) </div>",
             tooltip=f"{customer}",
@@ -52,11 +62,12 @@ def addCustomerMarkers():
 
 
 # NOT SURE OF THIS
-# def Door_to_Door_Distance():
-#     for customer, data in CustomerData.items():
-#         print(customer, f"--> Distance from {data['Origin']['name']} to {data['Destination']['name']} is", geodesic(data['Origin']['location'], data['Destination']['location']).kilometers, "Km")
+def Door_to_Door_Distance():
+    for customer, data in CustomerData.items():
+        print(customer, f"--> Distance from {data['Origin']['name']} to {data['Destination']['name']} is", geodesic(data['Origin']['location'], data['Destination']['location']).kilometers, "Km")
 
 
 addHubMarkers()
 addCustomerMarkers()
 auto_open_Map('HubsLocator.html')
+print(Door_to_Door_Distance())
