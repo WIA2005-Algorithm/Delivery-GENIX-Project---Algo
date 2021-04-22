@@ -1,5 +1,4 @@
 from HubsLocator import HubDeliveryMap
-from folium import plugins
 
 
 def HubLocation(hub):
