@@ -1,14 +1,3 @@
-from HubsLocator import HubDeliveryMap
-
-
-def HubLocation(hub):
-    return CourierCompanies[hub]['location']
-
-
-def CPLocation(customer):
-    return CustomerData[customer]['Origin']['location'], CustomerData[customer]['Destination']['location']
-
-
 CourierCompanies = {
     "City-link Express": {"name": "Port Klang", "location": (3.0319924887507144, 101.37344116244806), "icon": 'red'},
     "Pos Laju": {"name": "Petaling Jaya", "location": (3.112924170027219, 101.63982650389863), "icon": 'blue'},
@@ -34,11 +23,3 @@ CustomerData = {
         "icon": 'orange'
     }
 }
-
-myMap1 = HubDeliveryMap(CourierCompanies=CourierCompanies, CustomerData=CustomerData)
-myMap1.MarkDirectDistance()
-print(myMap1)
-
-
-
-

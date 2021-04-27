@@ -1,16 +1,15 @@
 import webbrowser
 import folium
+from folium import plugins
 from geopy.distance import geodesic
 
 
 class HubDeliveryMap:
     def __init__(self, CourierCompanies, CustomerData):
-        self.myMap = folium.Map(location=(3.1390, 101.6869), zoom_start=11)
+        self.myMap = plugins.DualMap(location=(3.1390, 101.6869), zoom_start=11)
         self.CourierCompanies = CourierCompanies
         self.CustomerData = CustomerData
-        # Add Hub Markers
         self.addHub()
-        # Add Customer Markers (Origin & Destination)
         self.addCustomer()
 
     def addMarker(self, location, popupText, hoverText, Icon, iconColour):
@@ -20,6 +19,15 @@ class HubDeliveryMap:
             tooltip=hoverText,
             icon=folium.Icon(icon=Icon, prefix='fa', color=iconColour)
         ).add_to(self.myMap)
+
+    def addPolyLine(self, locations, color, popupText, hoverText, m):
+        folium.PolyLine(
+            locations=locations,
+            color=color,
+            popup=f"<div style='width: max-content;text-align: center; font-weight: bold'>{popupText} Km) </div>",
+            tooltip=hoverText,
+            weight=4
+        ).add_to(m)
 
     def addHub(self):
         for Hub, detail in self.CourierCompanies.items():
@@ -35,14 +43,30 @@ class HubDeliveryMap:
 
     def MarkDirectDistance(self):
         for customer, data in self.CustomerData.items():
-            data['directDistance'] = geodesic(data['Origin']['location'], data['Destination']['location'])
-            folium.PolyLine(
-                locations=[data['Origin']['location'], data['Destination']['location']],
-                color=data['icon'],
-                popup=f"<div style='width: max-content;text-align: center; font-weight: bold'>{data['Origin']['name']} to {data['Destination']['name']}<br>({data['directDistance'].kilometers:.2f} Km) </div>",
-                tooltip=f"{customer}",
-                weight=4
-            ).add_to(self.myMap)
+            data['directDistance'] = geodesic(data['Origin']['location'], data['Destination']['location']).kilometers
+            self.addPolyLine(
+                [data['Origin']['location'], data['Destination']['location']],
+                data['icon'], f"{data['Origin']['name']} to {data['Destination']['name']}<br>({data['directDistance']:.2f}",
+                customer,
+                self.myMap.m1
+            )
+
+    def CalculateLeastDistance(self, origin, destination):
+        return min(
+            [{'Hub': Hub, 'TotalHubDistance': geodesic(origin, detail['location'], destination).kilometers, 'HubCoordinates': detail['location']} for Hub, detail in self.CourierCompanies.items()],
+            key=lambda d: d['TotalHubDistance']
+        )
+
+    def MarkLeastDistantPath(self):
+        for customer, data in self.CustomerData.items():
+            data['LeastHub'] = self.CalculateLeastDistance(data['Origin']['location'], data['Destination']['location'])
+            self.addPolyLine(
+                [data['Origin']['location'],  data['LeastHub']['HubCoordinates'], data['Destination']['location']],
+                data['icon'],
+                f"{data['Origin']['name']} to {data['Destination']['name']}<br> through {data['LeastHub']['Hub']} ({data['directDistance']:.2f}",
+                customer,
+                self.myMap.m2
+            )
 
     def __str__(self):
         html_page = 'HubsLocator.html'
