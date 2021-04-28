@@ -3,5 +3,5 @@ This project requires you and your teammates to analyse, design, and code a comp
 
 ###Initialisation
 1. Clone the project from github
-2. Open the file MainRawData.py
+2. Open the file MainFile.py
 3. Run the file

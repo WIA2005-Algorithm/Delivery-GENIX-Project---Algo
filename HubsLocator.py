@@ -63,7 +63,7 @@ class HubDeliveryMap:
             self.addPolyLine(
                 [data['Origin']['location'],  data['LeastHub']['HubCoordinates'], data['Destination']['location']],
                 data['icon'],
-                f"{data['Origin']['name']} to {data['Destination']['name']}<br> through {data['LeastHub']['Hub']} ({data['directDistance']:.2f}",
+                f"{data['Origin']['name']} to {data['Destination']['name']}<br> through {data['LeastHub']['Hub']} ({data['LeastHub']['TotalHubDistance']:.2f}",
                 customer,
                 self.myMap.m2
             )
