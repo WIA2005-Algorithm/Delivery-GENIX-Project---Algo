@@ -45,7 +45,6 @@ def removeWords(txt, indices, s):
 
 # Filter Stop Words
 def filterStopWords(textWordList):
-    print(textWordList)
     for word in stopwords:
         pat = " " + word + " "  # filtered word is identified by spaces first & last
         indices = FilterWordIndices(textWordList.lower(), pat)
@@ -54,17 +53,26 @@ def filterStopWords(textWordList):
     return textWordList.split()
 
 
+def countWords(wordlist):
+    freq = {}
+    for word in wordlist:
+        if word not in freq:
+            freq[word] = 0
+        freq[word] += 1
+    return freq
+
+
 def ReadFile():
-    for details in Articles.values():
-        File = open(details["file"], "r+", encoding='UTF8')
-        details["news"] = re.sub('[^0-9a-zA-Z&]+', ' ', File.read())  # Removing punctuation marks
-        details["filteredNews"] = filterStopWords(
-            " " + details["news"] + " ")  # To make sure first & last word is word recognized
-        print(details["filteredNews"])
+    for file in Articles.values():
+        File = open(file["file"], "r+", encoding='UTF8')
+        file["news"] = re.sub('[^0-9a-zA-Z&]+', ' ', File.read())  # Removing punctuation marks
+        file["filteredNews"] = filterStopWords(
+            " " + file["news"] + " ")  # To make sure first & last word is word recognized
+        file["wordFrequency"] = countWords(file["filteredNews"])
+        # print(file["wordFrequency"])
         File.close()
 
 
-ReadFile()
 
 # Binary Search with an addition of O(n/2)
 # def binarySearch(wordlist, start, end, target):
