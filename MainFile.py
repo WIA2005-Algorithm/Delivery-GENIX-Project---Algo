@@ -20,7 +20,4 @@ def CPLocation(customer):
 ReadFile()
 
 
-# for file in Articles.values():
-#     for word, n in file["wordFrequency"].items():
-#         print(word, "-->", n, end=", ")
-#     print("\n")
+
