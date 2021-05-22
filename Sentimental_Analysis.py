@@ -65,13 +65,11 @@ def countWords(wordlist):
 def ReadFile():
     for file in Articles.values():
         File = open(file["file"], "r+", encoding='UTF8')
-        file["news"] = re.sub('[^0-9a-zA-Z&]+', ' ', File.read())  # Removing punctuation marks
+        file["news"] = re.sub('[^a-zA-Z&]+', ' ', File.read())  # Removing punctuation marks
         file["filteredNews"] = filterStopWords(
             " " + file["news"] + " ")  # To make sure first & last word is word recognized
         file["wordFrequency"] = countWords(file["filteredNews"])
-        # print(file["wordFrequency"])
         File.close()
-
 
 
 # Binary Search with an addition of O(n/2)

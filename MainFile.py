@@ -1,6 +1,7 @@
 from HubsLocator import HubDeliveryMap
-from RawData import CourierCompanies, CustomerData, Articles
+from RawData import CourierCompanies, CustomerData
 from Sentimental_Analysis import ReadFile
+from Matplot import plotBarGraphs
 
 
 def HubLocation(hub):
@@ -11,16 +12,11 @@ def CPLocation(customer):
     return CustomerData[customer]['Origin']['location'], CustomerData[customer]['Destination']['location']
 
 
-# myMap1 = HubDeliveryMap(CourierCompanies=CourierCompanies, CustomerData=CustomerData)
-# myMap1.MarkDirectDistance()
-# myMap1.MarkLeastDistantPath()
-# print(myMap1)
+myMap1 = HubDeliveryMap(CourierCompanies=CourierCompanies, CustomerData=CustomerData)
+myMap1.MarkDirectDistance()
+myMap1.MarkLeastDistantPath()
+print(myMap1)
 
 # Sentimental Analysis
 ReadFile()
-
-
-# for file in Articles.values():
-#     for word, n in file["wordFrequency"].items():
-#         print(word, "-->", n, end=", ")
-#     print("\n")
+plotBarGraphs()
