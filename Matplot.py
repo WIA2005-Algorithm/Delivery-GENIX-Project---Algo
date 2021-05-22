@@ -10,8 +10,8 @@ default_count = 40
 def plotBar(axis, doc, top_count=default_count):
     txt = pd.DataFrame(collections.Counter(doc).most_common(top_count), columns=['words', 'count']).sort_values(
         by="count")
-    txt.plot.barh(x='words', y='count', ax=axis, color="purple")
-    [axis.text(v + 0.2, i - 0.2, str(v), color='blue', fontweight='bold') for i, v in enumerate(txt['count'])]
+    txt.plot.barh(x='words', y='count', ax=axis, color="red")
+    [axis.text(v + 0.2, i - 0.2, str(v), color='black', fontweight='bold') for i, v in enumerate(txt['count'])]
 
 
 def initializeFigure(doc, name):
