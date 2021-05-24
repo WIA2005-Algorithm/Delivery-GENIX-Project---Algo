@@ -62,7 +62,7 @@ def countWords(wordlist):
     return freq
 
 
-def ReadFile():
+def AnalyseArticles():
     for file in Articles.values():
         File = open(file["file"], "r+", encoding='UTF8')
         file["news"] = re.sub('[^a-zA-Z&]+', ' ', File.read())  # Removing punctuation marks
