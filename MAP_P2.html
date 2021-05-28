@@ -1,0 +1,273 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Hub Delivery Service</title>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyCvn0ce0DhkRist0XmM4llOrwc6moS9ePc"></script>
+<script type="text/javascript">
+    function initialize() {
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            zoom: 13,
+            center: new google.maps.LatLng(3.139000, 101.686900)
+        });
+
+        var marker_icon_FF0000 = {
+            url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABmJLR0QA/wD/AP+gvaeTAAACBklEQVRIia3VzUtUURgH4GdG/AiyZZShtWgXUbSIFtGqRYtqWRLhXyBYf0K6MaJQ2gRtayHtijYpleHKSCgIcRHoIiOSKEzLKea0OOeqTfPlzPzg5Qwz9zz3nXPvPTeneo7gNA4gjyI+Ygbva8z9L2cxi9BHOE+4msY+gliz6biayWE0R7GfMEcoEkJJzRH6CbnY+WiaVxEc6yY8KQOVq8eE7tj1WCV4qIswUyeY1QyhK8JDpWAP1m7vEMzqTkTXkrOZkYOEQoNogXAowiPE2wQuDqC9nktZJu0YSE72XRs2phrsMqup2OkG2vLpRB19DXaZJc3vQHv294Um0e3z8yigsNQkmuYXUMie5/npJtE0fz55YLiXsNHELdUbV2B4+4n2Y/Vmg+itCK4m558MdhBe7hCcJnRGdLDS0ox3E17XCb4h7IngeLX1zuFhD2G5BriytY4Tqmx9WXbh3Tnl99KsLkdwAbtrgVmO4/eDCuCkzd3/TL1glru9hF8lYJFwMoKPdgrCXqzfL0GfR7CIo42gcO9YCXopolONgnAC4W0Cv9l8dVxpBoWFGwmdiOC6Glc8X+3HlKeT6cOzOLzAjyaaBBc602ZzOHZ6vVkQ9kl7Qi6ip1qBwpdrEfwjPnFVU8+awuKrOC7hZ6vQlQ9baM3Ui379HsfVVqKf07jcSvRTGhfrOfgvIP3ECS77BDoAAAAASUVORK5CYII=",
+            labelOrigin: new google.maps.Point(10, 11)
+        };
+
+        var info_marker_0 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.031992, 101.373441),
+            title: "City-link Express - Port Klang",
+            icon: {
+            url: 'https://i.postimg.cc/63S7TpWH/location-pin.png',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_0 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Delivery Hub</b> </div>\n        <span><b>Name: </b> City-link Express</span>\n        <br>\n        <span><b>Location: </b> Port Klang</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b></b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_0.addListener('click', function() {
+            info_window_0.open(map, info_marker_0);
+        });
+
+        var info_marker_1 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.112924, 101.639827),
+            title: "Pos Laju - Petaling Jaya",
+            icon: {
+            url: 'https://i.postimg.cc/63S7TpWH/location-pin.png',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_1 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Delivery Hub</b> </div>\n        <span><b>Name: </b> Pos Laju</span>\n        <br>\n        <span><b>Location: </b> Petaling Jaya</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b></b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_1.addListener('click', function() {
+            info_window_1.open(map, info_marker_1);
+        });
+
+        var info_marker_2 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.265155, 101.680248),
+            title: "GDEX  - Batu Caves",
+            icon: {
+            url: 'https://i.postimg.cc/63S7TpWH/location-pin.png',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_2 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Delivery Hub</b> </div>\n        <span><b>Name: </b> GDEX </span>\n        <br>\n        <span><b>Location: </b> Batu Caves</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b></b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_2.addListener('click', function() {
+            info_window_2.open(map, info_marker_2);
+        });
+
+        var info_marker_3 = new google.maps.Marker({
+            position: new google.maps.LatLng(2.944121, 101.790152),
+            title: "J&T - Kajang",
+            icon: {
+            url: 'https://i.postimg.cc/63S7TpWH/location-pin.png',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_3 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Delivery Hub</b> </div>\n        <span><b>Name: </b> J&T</span>\n        <br>\n        <span><b>Location: </b> Kajang</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b></b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_3.addListener('click', function() {
+            info_window_3.open(map, info_marker_3);
+        });
+
+        var info_marker_4 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.212723, 101.574673),
+            title: "DHL - Sungai Buloh",
+            icon: {
+            url: 'https://i.postimg.cc/63S7TpWH/location-pin.png',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_4 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Delivery Hub</b> </div>\n        <span><b>Name: </b> DHL</span>\n        <br>\n        <span><b>Location: </b> Sungai Buloh</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b></b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_4.addListener('click', function() {
+            info_window_4.open(map, info_marker_4);
+        });
+
+        var info_marker_5 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.361540, 101.563182),
+            title: "Customer Ravi (Origin) - Rawang",
+            icon: {
+            url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_5 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Customer</b> </div>\n        <span><b>Name: </b> Customer Ravi (Origin)</span>\n        <br>\n        <span><b>Location: </b> Rawang</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>Passing through - DHL <br> Total Distance: 53954 Km</b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_5.addListener('click', function() {
+            info_window_5.open(map, info_marker_5);
+        });
+
+        var info_marker_6 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.100017, 101.530715),
+            title: "Customer Ravi (Destination) - Bukit Jelutong",
+            icon: {
+            url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_6 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Customer</b> </div>\n        <span><b>Name: </b> Customer Ravi (Destination)</span>\n        <br>\n        <span><b>Location: </b> Bukit Jelutong</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>Passing through - DHL <br> Total Distance: 53954 Km</b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_6.addListener('click', function() {
+            info_window_6.open(map, info_marker_6);
+        });
+
+        var info_marker_7 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.049398, 101.585466),
+            title: "Customer Wang Koii (Origin) - Subang Jaya",
+            icon: {
+            url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_7 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Customer</b> </div>\n        <span><b>Name: </b> Customer Wang Koii (Origin)</span>\n        <br>\n        <span><b>Location: </b> Subang Jaya</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>Passing through - DHL <br> Total Distance: 47523 Km</b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_7.addListener('click', function() {
+            info_window_7.open(map, info_marker_7);
+        });
+
+        var info_marker_8 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.227994, 101.427304),
+            title: "Customer Wang Koii (Destination) - Puncak Alam",
+            icon: {
+            url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_8 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Customer</b> </div>\n        <span><b>Name: </b> Customer Wang Koii (Destination)</span>\n        <br>\n        <span><b>Location: </b> Puncak Alam</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>Passing through - DHL <br> Total Distance: 47523 Km</b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_8.addListener('click', function() {
+            info_window_8.open(map, info_marker_8);
+        });
+
+        var info_marker_9 = new google.maps.Marker({
+            position: new google.maps.LatLng(3.141856, 101.761586),
+            title: "Customer Azizul (Origin) - Ampang",
+            icon: {
+            url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_9 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Customer</b> </div>\n        <span><b>Name: </b> Customer Azizul (Origin)</span>\n        <br>\n        <span><b>Location: </b> Ampang</span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>Passing through - DHL <br> Total Distance: 83517 Km</b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_9.addListener('click', function() {
+            info_window_9.open(map, info_marker_9);
+        });
+
+        var info_marker_10 = new google.maps.Marker({
+            position: new google.maps.LatLng(2.918870, 101.652518),
+            title: "Customer Azizul (Destination) - Cyberjaya ",
+            icon: {
+            url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+            scaledSize: new google.maps.Size(40, 40),
+            }
+            ,
+            map: map
+        });
+
+        var info_window_10 = new google.maps.InfoWindow({
+            content: '\n        <dl>\n        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>Customer</b> </div>\n        <span><b>Name: </b> Customer Azizul (Destination)</span>\n        <br>\n        <span><b>Location: </b> Cyberjaya </span>\n        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>Passing through - DHL <br> Total Distance: 83517 Km</b> </div>\n        </dl>\n        '
+        });
+        
+        info_marker_10.addListener('click', function() {
+            info_window_10.open(map, info_marker_10);
+        });
+
+        new google.maps.DirectionsService().route({
+            origin: new google.maps.LatLng(3.361540, 101.563182),
+            destination: new google.maps.LatLng(3.100017, 101.530715),
+            waypoints: [
+                {location: new google.maps.LatLng(3.212723, 101.574673), stopover: false},
+            ],
+            travelMode: "DRIVING"
+        }, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                new google.maps.DirectionsRenderer({map: map, suppressMarkers: true, polylineOptions: {strokeColor: '#194350', strokeWeight: 5, strokeOpacity: 0.8}, traffic_model: 'optimistic'}).setDirections(response);
+            }
+        });
+
+        new google.maps.DirectionsService().route({
+            origin: new google.maps.LatLng(3.049398, 101.585466),
+            destination: new google.maps.LatLng(3.227994, 101.427304),
+            waypoints: [
+                {location: new google.maps.LatLng(3.212723, 101.574673), stopover: false},
+            ],
+            travelMode: "DRIVING"
+        }, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                new google.maps.DirectionsRenderer({map: map, suppressMarkers: true, polylineOptions: {strokeColor: '#99154e', strokeWeight: 5, strokeOpacity: 0.8}, traffic_model: 'optimistic'}).setDirections(response);
+            }
+        });
+
+        new google.maps.DirectionsService().route({
+            origin: new google.maps.LatLng(3.141856, 101.761586),
+            destination: new google.maps.LatLng(2.918870, 101.652518),
+            waypoints: [
+                {location: new google.maps.LatLng(3.212723, 101.574673), stopover: false},
+            ],
+            travelMode: "DRIVING"
+        }, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                new google.maps.DirectionsRenderer({map: map, suppressMarkers: true, polylineOptions: {strokeColor: '#0a1931', strokeWeight: 5, strokeOpacity: 0.8}, traffic_model: 'optimistic'}).setDirections(response);
+            }
+        });
+
+    }
+</script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+    <div id="map_canvas" style="width: 100%; height: 100%;" />
+</body>
+</html>

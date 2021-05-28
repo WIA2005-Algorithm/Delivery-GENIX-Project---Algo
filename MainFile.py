@@ -3,10 +3,11 @@ from RawData import CourierCompanies, CustomerData
 from Sentimental_Analysis import AnalyseArticles
 from Matplot import plotBarGraphs
 
-myMap1 = HubDeliveryMap(CourierCompanies=CourierCompanies, CustomerData=CustomerData)
-myMap1.MarkDirectDistance()
-myMap1.MarkLeastDistantPath()
-print(myMap1)
+print("""
+ *** WELCOME TO HUBS DELIVERY SERVICE APPLICATION ***
+        The best customer service in town
+""")
+
 
 # Sentimental Analysis
 AnalyseArticles()

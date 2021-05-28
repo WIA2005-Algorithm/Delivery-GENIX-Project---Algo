@@ -1,75 +1,102 @@
 import webbrowser
-import folium
-from folium import plugins
-from geopy.distance import geodesic
+import gmplot
+import requests
+from RawData import CourierCompanies, CustomerData
+
+
+class PreProcess:
+    def __init__(self):
+        self.API_KEY = "AIzaSyCvn0ce0DhkRist0XmM4llOrwc6moS9ePc"
+        self.DirectionsAPI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
+        self.PreProcessDirectDistance()
+        self.PreProcessCustomerDeliveryHubs()
+
+    # Common Function to Calculate Distance between 2 or 3 Locations
+    def CalculateDistance(self, origin, destination):
+        request = f"origins={','.join(map(str, origin))}&destinations={','.join(map(str, destination))}&key={self.API_KEY}"
+        return requests.get(self.DirectionsAPI + request).json()['rows'][0]['elements'][0]['distance']
+
+    # Function to calculate the best hub among the given hubs to transfer package between given locations
+    def CalculateBestHub(self, origin, Destination):
+        print(origin, " \t", Destination)
+        dist = 1000
+        FinalHub = None
+        for name, Hubs in CourierCompanies.items():
+            newD = (self.CalculateDistance(origin, Hubs['location'])['value']) + (self.CalculateDistance(Hubs['location'], Destination)['value'])
+            FinalHub = {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location']}
+            if dist > newD/1000:
+                dist = newD
+        FinalHub['DistanceTravelled'] = dist
+        return FinalHub
+
+    # Function to Calculate Distance between Customer Origin & Customer Destination
+    def PreProcessDirectDistance(self):
+        for name, customer in CustomerData.items():
+            customer['DirectDistance'] = self.CalculateDistance(customer["Origin"]["location"],
+                                                                customer["Destination"]["location"])
+
+    # Function to Calculate Hubs each Customers will transfer there package from
+    def PreProcessCustomerDeliveryHubs(self):
+        for name, customer in CustomerData.items():
+            customer['route'] = self.CalculateBestHub(customer["Origin"]["location"],
+                                                      customer["Destination"]["location"])
 
 
 class HubDeliveryMap:
-    def __init__(self, CourierCompanies, CustomerData):
-        self.myMap = plugins.DualMap(location=(3.1390, 101.6869), zoom_start=11)
-        self.CourierCompanies = CourierCompanies
-        self.CustomerData = CustomerData
-        self.addHub()
-        self.addCustomer()
+    def __init__(self, Permission=True):
+        self.API_KEY = "AIzaSyCvn0ce0DhkRist0XmM4llOrwc6moS9ePc"
+        self.info_box_template = """
+        <dl>
+        <div style="text-align:center;font-size: 16px;margin-bottom: 10px;color: red;"> <b>{Type}</b> </div>
+        <span><b>Name: </b> {name}</span>
+        <br>
+        <span><b>Location: </b> {location}</span>
+        <div style="text-align:center;font-size: 14px;margin-top: 8px;color: red;"> <b>{AddContent}</b> </div>
+        </dl>
+        """
+        self.HubIconURL = 'https://i.postimg.cc/63S7TpWH/location-pin.png'
+        self.CusIconURL = 'http://image.flaticon.com/icons/svg/252/252025.svg'
+        self.Permission = Permission
+        self.Map = gmplot.GoogleMapPlotter(3.1390, 101.6869, 13, apikey=self.API_KEY, title="Hub Delivery Service")
+        self.HTML_PAGE = ('MAP_P1' if Permission else 'MAP_P2') + '.html'
+        self.addHubMarker()
+        self.addCustomerMarker()
 
-    def addMarker(self, location, popupText, hoverText, Icon, iconColour):
-        folium.Marker(
-            location=location,
-            popup=f"<div style='width: max-content;text-align: center; font-weight: bold'>{popupText}</div>",
-            tooltip=hoverText,
-            icon=folium.Icon(icon=Icon, prefix='fa', color=iconColour)
-        ).add_to(self.myMap)
+    # Common Function to add Marker for respective locations given
+    def addMarker(self, coordinates, MarkerName, MarkerLocation, ICON=None, Type='Customer', AContent=''):
+        self.Map.marker(coordinates[0], coordinates[1], title=f"{MarkerName} - {MarkerLocation}",
+                        info_window=self.info_box_template.format(Type=Type, name=MarkerName, location=MarkerLocation,
+                                                                  AddContent=AContent),
+                        IconURL=(ICON or self.CusIconURL))
 
-    def addPolyLine(self, locations, color, popupText, hoverText, m):
-        folium.PolyLine(
-            locations=locations,
-            color=color,
-            popup=f"<div style='width: max-content;text-align: center; font-weight: bold'>{popupText} Km) </div>",
-            tooltip=hoverText,
-            weight=4
-        ).add_to(m)
+    def addHubMarker(self):
+        for name, Hubs in CourierCompanies.items():
+            self.addMarker(Hubs['location'], name, Hubs['name'], self.HubIconURL, 'Delivery Hub')
 
-    def addHub(self):
-        for Hub, detail in self.CourierCompanies.items():
-            self.addMarker(detail["location"], f"{detail['name']} - {Hub}", f"HUB - {Hub}", 'truck', detail['icon'])
-
-    def addCustomer(self):
-        for customer, data in self.CustomerData.items():
-            self.addMarker(data['Origin']['location'], f"{customer} - {data['Origin']['name']}<br>(Origin) ",
-                           f"Origin - {customer}", 'user', data['icon'])
-            self.addMarker(data['Destination']['location'],
-                           f"{customer} - {data['Destination']['name']}<br>(Destination) ",
-                           f"Destination - {customer}", 'user', data['icon'])
-
-    def MarkDirectDistance(self):
-        for customer, data in self.CustomerData.items():
-            data['directDistance'] = geodesic(data['Origin']['location'], data['Destination']['location']).kilometers
-            self.addPolyLine(
-                [data['Origin']['location'], data['Destination']['location']],
-                data['icon'], f"{data['Origin']['name']} to {data['Destination']['name']}<br>({data['directDistance']:.2f}",
-                customer,
-                self.myMap.m1
-            )
-
-    def CalculateLeastDistance(self, origin, destination):
-        return min(
-            [{'Hub': Hub, 'TotalHubDistance': geodesic(origin, detail['location'], destination).kilometers, 'HubCoordinates': detail['location']} for Hub, detail in self.CourierCompanies.items()],
-            key=lambda d: d['TotalHubDistance']
-        )
+    def addCustomerMarker(self):
+        for name, customer in CustomerData.items():
+            content = f"Direct Distance: {customer['DirectDistance']['text']}" if self.Permission else f"Passing through - {customer['route']['Hub']} <br> Total Distance: {customer['route']['DistanceTravelled']} Km"
+            self.addMarker(customer["Origin"]["location"], name + " (Origin)", customer['Origin']['name'],
+                           AContent=content)
+            self.addMarker(customer["Destination"]["location"], name + " (Destination)",
+                           customer['Destination']['name'], AContent=content)
 
     def MarkLeastDistantPath(self):
-        for customer, data in self.CustomerData.items():
-            data['LeastHub'] = self.CalculateLeastDistance(data['Origin']['location'], data['Destination']['location'])
-            self.addPolyLine(
-                [data['Origin']['location'],  data['LeastHub']['HubCoordinates'], data['Destination']['location']],
-                data['icon'],
-                f"{data['Origin']['name']} to {data['Destination']['name']}<br> through {data['LeastHub']['Hub']} ({data['LeastHub']['TotalHubDistance']:.2f}",
-                customer,
-                self.myMap.m2
-            )
+        for name, customer in CustomerData.items():
+            self.Map.directions(
+                customer["Origin"]["location"],
+                customer["Destination"]["location"],
+                strokeColor=customer['color'])
+
+    def MarkRoutesHubs(self):
+        for name, customer in CustomerData.items():
+            self.Map.directions(
+                customer["Origin"]["location"],
+                customer["Destination"]["location"],
+                waypoints=[customer['route']['HubCoordinates']],
+                strokeColor=customer['color'])
 
     def __str__(self):
-        html_page = 'HubsLocator.html'
-        self.myMap.save(html_page)
-        webbrowser.open(html_page, new=2)
-        return "Successfully Opened HubsLocator.html"
+        self.Map.draw(self.HTML_PAGE)
+        webbrowser.open(self.HTML_PAGE, new=2)
+        return "Successfully Opened Page"
