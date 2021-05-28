@@ -1,23 +1,23 @@
 CourierCompanies = {
-    "City-link Express": {"name": "Port Klang", "location": (3.0319924887507144, 101.37344116244806), "Customers": []},
-    "Pos Laju": {"name": "Petaling Jaya", "location": (3.112924170027219, 101.63982650389863), "Customers": []},
-    "GDEX ": {"name": "Batu Caves", "location": (3.265154613796736, 101.68024844550233), "Customers": []},
-    "J&T": {"name": "Kajang", "location": (2.9441205329488325, 101.7901521759029), "Customers": []},
-    "DHL": {"name": "Sungai Buloh", "location": (3.2127230893650065, 101.57467295692778), "Customers": []}
+    "City-link Express": {"name": "Port Klang", "location": (3.0319924887507144, 101.37344116244806)},
+    "Pos Laju": {"name": "Petaling Jaya", "location": (3.112924170027219, 101.63982650389863)},
+    "GDEX ": {"name": "Batu Caves", "location": (3.265154613796736, 101.68024844550233)},
+    "J&T": {"name": "Kajang", "location": (2.9441205329488325, 101.7901521759029)},
+    "DHL": {"name": "Sungai Buloh", "location": (3.2127230893650065, 101.57467295692778)}
 }
 
 CustomerData = {
-    "Customer Ravi": {
+    "Ravi": {
         "Origin": {"name": "Rawang", "location": (3.3615395462207878, 101.56318183511695)},
         "Destination": {"name": "Bukit Jelutong", "location": (3.1000170516638885, 101.53071480907951)},
         "color": '#194350'
     },
-    "Customer Wang Koii": {
+    "Wang Koii": {
         "Origin": {"name": "Subang Jaya", "location": (3.049398375759954, 101.58546611160301)},
         "Destination": {"name": "Puncak Alam", "location": (3.227994355250716, 101.42730357605375)},
         "color": '#99154e'
     },
-    "Customer Azizul": {
+    "Azizul": {
         "Origin": {"name": "Ampang", "location": (3.141855957281073, 101.76158583424586)},
         "Destination": {"name": "Cyberjaya ", "location": (2.9188704151716256, 101.65251821655471)},
         "color": '#0a1931'
