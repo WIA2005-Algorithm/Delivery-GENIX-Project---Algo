@@ -72,6 +72,142 @@ def AnalyseArticles():
         File.close()
 
 
+whole_word = Articles
+arrayPositive = []
+arrayNegative = []
+# positive words file
+f = open('positive_words.txt')
+positive = f.read()
+f.close()
+#negative words file
+f = open('negative_words.txt')
+negative = f.read()
+f.close()
+
+#KMP string matching algorithm
+
+counter = 0
+
+def KMPSearchPositive (pat, txt):
+    M = len(pat)
+    N = len(txt)
+
+    # create lps[] that will hold the longest prefix suffix
+    # #values for pattern
+    lps = [0] * M
+    j = 0 #index for pat[]
+
+    # Preprocess the pattern (calculate lps[] array)
+    computeLPSArray (pat, M, lps)
+
+    i = 0 # index for txt[]
+    if M == N:
+        while i < N:
+            if pat [j] == txt [i]:
+                i += 1
+                j += 1
+
+            if j == M:
+                # print ("Found pattern at index " + str(i-j)+pat)
+                print("Found word = ", pat) ## insert counter here
+                j = lps[j - 1]
+
+                arrayPositive.append(pat)
+
+                # mismatch after j matches
+
+            elif i < N and pat[j] != txt[i]:
+                # Do not match lps[0...lps[j-1]] characters, they will match anyway
+
+                if j !=0:
+                    j = lps[j - 1]
+                else:
+                    i += 1
+
+def KMPSearchNegative (pat, txt):
+    M = len(pat)
+    N = len(txt)
+
+    # create lps[] taht will hold the longest prefix suffix
+    #values for pattern
+    lps = [0] * M
+    j = 0 # indext for pat[]
+
+    # Preprocess the pattern (calculate lps[] array)
+
+    computeLPSArray (pat, M, lps)
+
+    i = 0 #index for txt[]
+    if M == N:
+        while i < N:
+            if pat [j] == txt[i]:
+                i += 1
+                j += 1
+
+            if j == M:
+                    print("Found word =", pat) ## insert counter here
+                    j = lps[j-1]
+
+                    arrayNegative.append(pat)
+
+                    #mismatch after j matches
+            elif i < N and pat[j] != txt[i]:
+                # Do not match lps[0...lps[j-1]] characters, they will match anyway
+
+                if j != 0:
+                    j = lps[j - 1]
+                else:
+                    i += 1
+
+def computeLPSArray(pat, M, lps):
+    len = 0 # length of the previous longest prefix suffix
+
+    lps[0] # lps[0] is always 0
+    i = 1
+
+    # the loop calculates lps [i] for i = i to M-1
+    while i < M:
+        if pat[i] == pat[len]:
+            len += 1
+            lps[i] = len
+            i += 1
+        else:
+            # Consider the example. AAACAAAA and i = 7. The idea is similar. To search step.
+            if len != 0:
+                len = lps [len - 1]
+
+                #Also, note that no increment i here
+
+            else:
+                lps[i] = 0
+                i += 1
+    # positive word print
+    print('')
+    print('Number of positive words in this article: ')
+    print('')
+    i = 0
+    j = 0
+
+    for pos_word in positive.split():
+        for j in whole_word.split():
+            KMPSearchPositive(pos_word, j)
+
+    totalPositive = len(arrayPositive)
+
+    print('Total number of positive word in the article is = ', totalPositive)
+
+    # negative word print
+    print('')
+    print('Number of negative words in this article: ')
+    print('')
+    for neg_word in negative.split():
+        for j in whole_word.split():
+            KMPSearchNegative(neg_word. j)
+
+    totalNegative = len(arrayNegative)
+
+    print('Total number of negative word in the article is = ', totalNegative)
+
 # Binary Search with an addition of O(n/2)
 # def binarySearch(wordlist, start, end, target):
 #     if start < end:
