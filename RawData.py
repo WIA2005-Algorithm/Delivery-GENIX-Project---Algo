@@ -27,6 +27,10 @@ CustomerData = {
 Articles = {
     "City-Link-Express": {
         "file": "./Articles/City-Link-Express.txt"
+        # "news": str
+        # "filteredNews": list of words
+        # "wordFrequency": dict of words, count
+        # "wordCategoryCount" dict of category, list of words --> {"positive": [" ", ""], "negative": ["", "", ] ....}
     },
     "DHL": {
         "file": "./Articles/DHL.txt"

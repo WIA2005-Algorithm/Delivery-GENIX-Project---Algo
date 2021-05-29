@@ -27,6 +27,8 @@ class PreProcess:
                 dist = newD
                 FinalHub = {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],
                             'DistanceTravelled': dist}
+            print(f"Hub {name} takes -  {newD} Km to transfer parcel")
+        print(f"Therefore, the best shortest distance is {dist} covered by {FinalHub['Hub']}\n")
         return FinalHub
 
     # Function to Calculate Distance between Customer Origin & Customer Destination
@@ -38,6 +40,7 @@ class PreProcess:
     # Function to Calculate Hubs each Customers will transfer there package from
     def PreProcessCustomerDeliveryHubs(self):
         for name, customer in CustomerData.items():
+            print(f"For Customer {name} - ")
             customer['route'] = self.CalculateBestHub(customer["Origin"]["location"],
                                                       customer["Destination"]["location"])
 

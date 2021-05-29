@@ -95,6 +95,11 @@ def countWords(wordlist):
     return freq
 
 
+def OpenWords(file='positive_words'):
+    f = open(f'Articles/{file}.txt', "r+", encoding='UTF8')
+    return '@' + '@'.join(f.read().split()) + '@'
+
+
 def AnalyseArticles():
     for file in Articles.values():
         File = open(file["file"], "r+", encoding='UTF8')
@@ -103,11 +108,6 @@ def AnalyseArticles():
             " " + file["news"] + " ")  # To make sure first & last word is word recognized
         file["wordFrequency"] = countWords(file["filteredNews"])
         File.close()
-
-
-def OpenWords(file='positive_words'):
-    f = open(f'Articles/{file}.txt', "r+", encoding='UTF8')
-    return '@' + '@'.join(f.read().split()) + '@'
 
 
 def AnalyseWordsCategories():
@@ -123,106 +123,18 @@ def AnalyseWordsCategories():
             else:
                 WordCategoryCount['neutral'].append(word)
         file['wordCategoryCount'] = WordCategoryCount
+        print(len(file['wordCategoryCount']['positive']),  "\t",len(file['wordCategoryCount']['negative']), "\t",len(file['wordCategoryCount']['neutral']))
 
-# def computeLPSArray(pat, M, lps):
-#     len = 0  # length of the previous longest prefix suffix
-#
-#     lps[0]  # lps[0] is always 0
-#     i = 1
-#
-#     # the loop calculates lps [i] for i = i to M-1
-#     while i < M:
-#         if pat[i] == pat[len]:
-#             len += 1
-#             lps[i] = len
-#             i += 1
-#         else:
-#             # Consider the example. AAACAAAA and i = 7. The idea is similar. To search step.
-#             if len != 0:
-#                 len = lps[len - 1]
-#
-#                 # Also, note that no increment i here
-#
-#             else:
-#                 lps[i] = 0
-#                 i += 1
-#     # positive word print
-#     print('')
-#     print('Number of positive words in this article: ')
-#     print('')
-#     i = 0
-#     j = 0
-#
-#     for pos_word in positive.split():
-#         for j in whole_word.split():
-#             KMPSearchPositive(pos_word, j)
-#
-#     totalPositive = len(arrayPositive)
-#
-#     print('Total number of positive word in the article is = ', totalPositive)
-#
-#     # negative word print
-#     print('')
-#     print('Number of negative words in this article: ')
-#     print('')
-#     for neg_word in negative.split():
-#         for j in whole_word.split():
-#             KMPSearchNegative(neg_word.j)
-#
-#     totalNegative = len(arrayNegative)
-#
-#     print('Total number of negative word in the article is = ', totalNegative)
 
-# Binary Search with an addition of O(n/2)
-# def binarySearch(wordlist, start, end, target):
-#     if start < end:
-#         mid = int(start + (end - start) / 2)
-#         if wordlist[mid].lower() == target:
-#             i, j = mid - 1, mid + 1
-#             while i >= start and wordlist[mid].lower() == wordlist[i].lower():
-#                 i -= 1
-#             while j < end and wordlist[mid].lower() == wordlist[j].lower():
-#                 j += 1
-#             print(start, mid, end)
-#             print(wordlist[i:j])
-#             return i + 1, j
-#         if wordlist[mid].lower() > target:
-#             return binarySearch(wordlist, start, mid - 1, target)
-#         return binarySearch(wordlist, mid + 1, end, target)
-#     return -1
-#
-#
-# # Search Stop Words using Exponential Searching
-# def ExponentialSearching(wordlist, target):
-#     if wordlist[0].lower() == target:
-#         return 0
-#     i = 1
-#     while i < len(wordlist) and wordlist[i].lower() <= target:
-#         i = i * 2
-#     return binarySearch(wordlist, int(i / 2), min(i, len(wordlist) - 1), target)
-#
-#
-# # function to find the partition position
-# def partition(array, low, high):
-#     pivot = array[high]
-#     i = low - 1
-#     for j in range(low, high):
-#         if array[j].lower() <= pivot.lower():
-#             i = i + 1
-#             (array[i], array[j]) = (array[j], array[i])
-#     (array[i + 1], array[high]) = (array[high], array[i + 1])
-#     return i + 1
-#
-#
-# # function to perform quicksort
-# def quickSort(array, low, high):
-#     if low < high:
-#         pi = partition(array, low, high)
-#         quickSort(array, low, pi - 1)
-#         quickSort(array, pi + 1, high)
-#
-#
-# # helper function to sort list
-# def SortList(wordlist):
-#     quickSort(wordlist, 0, len(wordlist) - 1)
-#     return wordlist
+
+# Aiman Complete this function!! Check the rawdata.py to know where or how positive, negative words & neutral words are stored
+# Use variables to store result or print stateents
+# Conclude using the data, display number of words in each category...etc etc..
+# Apply these functions in order before running
+# AnalyseArticles()
+# AnalyseWordsCategories()
+def Conclusion():
+    for file in Articles.values():
+        for Category in file['wordCategoryCount']:
+            # if Category['postive'] blah blah ...
+            pass
