@@ -84,20 +84,20 @@ class HubDeliveryMap:
             self.addMarker(customer["Destination"]["location"], name + " (Destination)",
                            customer['Destination']['name'], AContent=content)
 
+    def PlotRoute(self, origin, destination, color, WayPoint=None):
+        if WayPoint is None:
+            WayPoint = []
+        self.Map.directions(origin, destination, strokeColor=color, waypoints=WayPoint)
+
     def MarkLeastDistantPath(self):
         for name, customer in CustomerData.items():
-            self.Map.directions(
-                customer["Origin"]["location"],
-                customer["Destination"]["location"],
-                strokeColor=customer['color'])
+            self.PlotRoute(customer["Origin"]["location"], customer["Destination"]["location"], customer['color'])
 
     def MarkRoutesHubs(self):
         for name, customer in CustomerData.items():
-            self.Map.directions(
-                customer["Origin"]["location"],
-                customer["Destination"]["location"],
-                waypoints=[customer['route']['HubCoordinates']],
-                strokeColor=customer['color'])
+            self.PlotRoute(customer["Origin"]["location"], customer
+            ["Destination"]["location"], customer['color'],
+                           WayPoint=[customer['route']['HubCoordinates']])
 
     def __str__(self):
         self.Map.draw(self.HTML_PAGE)
