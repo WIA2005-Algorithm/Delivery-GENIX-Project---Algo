@@ -2,14 +2,12 @@ import time
 
 from CusHubsMap import HubDeliveryMap, PreProcess
 from RawData import CourierCompanies, CustomerData
-from Sentimental_Analysis import AnalyseArticles
+# from Sentimental_Analysis import AnalyseArticles
 from Matplot import plotBarGraphs
 
 
-def Exit():
-    if input("Type Y to Continue...... ") != ('Y' and 'y'):
-        exit(0)
-    return
+def Continue():
+    input("Please Enter Key to Continue....")
 
 
 print("""
@@ -64,25 +62,25 @@ print("""
 Alright, Time for Some Visuals... Let's Goo
 Hint: Click on the symbols to view more details
 """)
+Continue()
 print(H)
-time.sleep(2)
-Exit()
+Continue()
 print("""
 *** Welcome Back, Let's Continue***
 Oki, Time to decide the best hub out there...hihi
 """)
-time.sleep(1)
 H2.MarkRoutesHubs()
 for cus, detail in CustomerData.items():
-    print(f"According to the analytics :> Customer {cus} :->  {detail['Origin']['name']} <-> {detail['Destination']['name']}\n\t\t\tWill use {detail['route']['Hub']} covering a total route distances of {detail['route']['DistanceTravelled']} Km")
+    print(f"According to the analytics :> Customer {cus} :->  {detail['Origin']['name']} <-> {detail['Destination']['name']} will use {detail['route']['Hub']} covering a total route distances of {detail['route']['DistanceTravelled']} Km")
 
 time.sleep(1)
 print("""
 *** Let's Have a Look at it on the Map ***
 """)
+Continue()
 print(H2)
-Exit()
+Continue()
 
 # Sentimental Analysis
-AnalyseArticles()
-plotBarGraphs()
+# AnalyseArticles()
+# plotBarGraphs()

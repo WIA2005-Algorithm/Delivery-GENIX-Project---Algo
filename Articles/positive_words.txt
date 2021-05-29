@@ -3,15 +3,15 @@ abound
 abounds
 abundance
 abundant
-accessable
+accessible
 accessible
 acclaim
 acclaimed
 acclamation
 accolade
 accolades
-accommodative
-accomodative
+accommodate
+accommodated
 accomplish
 accomplished
 accomplishment
@@ -21,7 +21,7 @@ accurately
 achievable
 achievement
 achievements
-achievible
+achievable
 acumen
 adaptable
 adaptive
@@ -70,7 +70,7 @@ affluent
 afford
 affordable
 affordably
-afordable
+affordable
 agile
 agilely
 agility
@@ -94,7 +94,7 @@ ameliorate
 amenable
 amenity
 amiability
-amiabily
+amiably
 amiable
 amicability
 amicable
@@ -166,13 +166,12 @@ awesome
 awesomely
 awesomeness
 awestruck
-awsome
+awesome
 backbone
 balanced
 bargain
 beauteous
 beautiful
-beautifullly
 beautifully
 beautify
 beauty
@@ -181,7 +180,7 @@ beckoned
 beckoning
 beckons
 believable
-believeable
+believable
 beloved
 benefactor
 beneficent
@@ -192,7 +191,7 @@ benefit
 benefits
 benevolence
 benevolent
-benifits
+benefits
 best
 best-known
 best-performing
@@ -200,7 +199,7 @@ best-selling
 better
 better-known
 better-than-expected
-beutifully
+beautifully
 blameless
 bless
 blessing
@@ -237,7 +236,6 @@ brighten
 brighter
 brightest
 brilliance
-brilliances
 brilliant
 brilliantly
 brisk
@@ -255,7 +253,7 @@ captivate
 captivating
 carefree
 cashback
-cashbacks
+cashback's
 catchy
 celebrate
 celebrated
@@ -352,9 +350,9 @@ contribution
 convenience
 convenient
 conveniently
-convience
-convienient
-convient
+convince
+convenient
+convent
 convincing
 convincingly
 cool
@@ -386,8 +384,8 @@ cure-all
 cushy
 cute
 cuteness
-danke
-danken
+dank
+darken
 daring
 daringly
 darling
@@ -411,7 +409,8 @@ defeats
 defender
 deference
 deft
-deginified
+dignity
+dignified
 delectable
 delicacy
 delicate
@@ -420,7 +419,7 @@ delight
 delighted
 delightful
 delightfully
-delightfulness
+delightfully
 dependable
 dependably
 deservedly
@@ -433,7 +432,7 @@ detachable
 devout
 dexterous
 dexterously
-dextrous
+dexterous
 dignified
 dignify
 dignity
@@ -479,7 +478,7 @@ easygoing
 ebullience
 ebullient
 ebulliently
-ecenomical
+economical
 economical
 ecstasies
 ecstasy
@@ -558,7 +557,7 @@ enlightenment
 enliven
 ennoble
 enough
-enrapt
+encrypt
 enrapture
 enraptured
 enrich
@@ -589,7 +588,7 @@ enviously
 enviousness
 envy
 equitable
-ergonomical
+ergonomically
 err-free
 erudite
 ethical
@@ -605,21 +604,18 @@ evocative
 exalt
 exaltation
 exalted
-exaltedly
 exalting
-exaltingly
-examplar
-examplary
-excallent
+exultingly
+exemplar
+exemplary
+excellent
 exceed
 exceeded
 exceeding
 exceedingly
 exceeds
 excel
-exceled
-excelent
-excellant
+excelled
 excelled
 excellence
 excellency
@@ -631,17 +627,16 @@ exceptionally
 excite
 excited
 excitedly
-excitedness
+excitements
 excitement
 excites
 exciting
 excitingly
-exellent
 exemplar
 exemplary
 exhilarate
 exhilarating
-exhilaratingly
+exhilarating
 exhilaration
 exonerate
 expansive
@@ -650,7 +645,7 @@ expertly
 exquisite
 exquisitely
 extol
-extoll
+extol
 extraordinarily
 extraordinary
 exuberance
@@ -662,8 +657,6 @@ exultation
 exultingly
 eye-catch
 eye-catching
-eyecatch
-eyecatching
 fabulous
 fabulously
 facilitate
@@ -679,7 +672,7 @@ famed
 famous
 famously
 fancier
-fancinating
+fascinating
 fancy
 fanfare
 fans
@@ -704,7 +697,7 @@ favor
 favorable
 favored
 favorite
-favorited
+favorite
 favour
 fearless
 fearlessly
@@ -712,7 +705,7 @@ feasible
 feasibly
 feat
 feature-rich
-fecilitous
+felicitous
 feisty
 felicitate
 felicitous
@@ -776,7 +769,6 @@ fruitful
 ftw
 fulfillment
 fun
-futurestic
 futuristic
 gaiety
 gaily
@@ -833,8 +825,6 @@ good
 goodly
 goodness
 goodwill
-goood
-gooood
 gorgeous
 gorgeously
 grace
@@ -908,8 +898,8 @@ hero
 heroic
 heroically
 heroine
-heroize
-heros
+heroine
+heroes
 high-quality
 high-spirited
 hilarious
@@ -936,7 +926,7 @@ humor
 humorous
 humorously
 humour
-humourous
+humorous
 ideal
 idealize
 ideally
@@ -950,7 +940,7 @@ illuminating
 illumine
 illustrious
 ilu
-imaculate
+immaculate
 imaginative
 immaculate
 immaculately
@@ -996,9 +986,7 @@ ingenuously
 innocuous
 innovation
 innovative
-inpressed
 insightful
-insightfully
 inspiration
 inspirational
 inspire
@@ -1021,7 +1009,6 @@ intriguing
 intriguingly
 intuitive
 invaluable
-invaluablely
 inventive
 invigorate
 invigorating
@@ -1035,9 +1022,7 @@ irreproachable
 irresistible
 irresistibly
 issue-free
-jaw-droping
 jaw-dropping
-jollify
 jolly
 jovial
 joy
@@ -1047,9 +1032,8 @@ joyous
 joyously
 jubilant
 jubilantly
-jubilate
+jubilant
 jubilation
-jubiliant
 judicious
 justly
 keen
@@ -1144,7 +1128,6 @@ marvelled
 marvellous
 marvelous
 marvelously
-marvelousness
 marvels
 master
 masterful
@@ -1172,7 +1155,6 @@ mesmerize
 mesmerized
 mesmerizes
 mesmerizing
-mesmerizingly
 meticulous
 meticulously
 mightily
@@ -1253,8 +1235,6 @@ painlessly
 palatial
 pamper
 pampered
-pamperedly
-pamperedness
 pampers
 panoramic
 paradise
@@ -1307,9 +1287,7 @@ pleasure
 plentiful
 pluses
 plush
-plusses
 poetic
-poeticize
 poignant
 poise
 poised
@@ -1335,8 +1313,6 @@ preeminent
 prefer
 preferable
 preferably
-prefered
-preferes
 preferring
 prefers
 premier
@@ -1384,7 +1360,6 @@ pros
 prosper
 prosperity
 prosperous
-prospros
 protect
 protection
 protective
@@ -1413,8 +1388,6 @@ rapid
 rapport
 rapt
 rapture
-raptureous
-raptureously
 rapturous
 rapturously
 rational
@@ -1434,7 +1407,6 @@ reassurance
 reassure
 receptive
 reclaim
-recomend
 recommend
 recommendation
 recommendations
@@ -1467,7 +1439,6 @@ regally
 regard
 rejoice
 rejoicing
-rejoicingly
 rejuvenate
 rejuvenated
 rejuvenating
@@ -1525,13 +1496,11 @@ revolutionized
 revolutionizes
 reward
 rewarding
-rewardingly
 rich
 richer
 richly
 richness
 right
-righten
 righteous
 righteously
 righteousness
@@ -1544,7 +1513,6 @@ robust
 rock-star
 rock-stars
 rockstar
-rockstars
 romantic
 romantically
 romanticize
@@ -1567,7 +1535,6 @@ satisfied
 satisfies
 satisfy
 satisfying
-satisified
 saver
 savings
 savior
@@ -1597,7 +1564,6 @@ sharp
 sharper
 sharpest
 shimmering
-shimmeringly
 shine
 shiny
 significant
@@ -1615,7 +1581,6 @@ skill
 skilled
 skillful
 skillfully
-slammin
 sleek
 slick
 smart
@@ -1629,7 +1594,6 @@ smilingly
 smitten
 smooth
 smoother
-smoothes
 smoothest
 smoothly
 snappy
@@ -1657,7 +1621,6 @@ speedily
 speedy
 spellbind
 spellbinding
-spellbindingly
 spellbound
 spirited
 spiritual
@@ -1686,7 +1649,6 @@ steadiest
 steadiness
 steady
 stellar
-stellarly
 stimulate
 stimulates
 stimulating
@@ -1723,7 +1685,6 @@ succeed
 succeeded
 succeeding
 succeeds
-succes
 success
 successes
 successful
@@ -1752,8 +1713,6 @@ supports
 supremacy
 supreme
 supremely
-supurb
-supurbly
 surmount
 surpass
 surreal
@@ -1866,7 +1825,6 @@ undamaged
 undaunted
 understandable
 undisputable
-undisputably
 undisputed
 unencumbered
 unequivocal
@@ -1893,11 +1851,9 @@ upheld
 uphold
 uplift
 uplifting
-upliftingly
-upliftment
+uplifted
 upscale
 usable
-useable
 useful
 user-friendly
 user-replaceable
@@ -1954,13 +1910,11 @@ well-regarded
 well-rounded
 well-run
 well-wishers
-wellbeing
 whoa
 wholeheartedly
 wholesome
 whooa
 whoooa
-wieldy
 willing
 willingly
 willingness
@@ -1979,8 +1933,6 @@ won
 wonder
 wonderful
 wonderfully
-wonderous
-wonderously
 wonders
 wondrous
 woo
