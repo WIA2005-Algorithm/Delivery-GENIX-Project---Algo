@@ -9,6 +9,7 @@ from Matplot import plotBarGraphs
 def Exit():
     if input("Type Y to Continue...... ") != ('Y' and 'y'):
         exit(0)
+    return
 
 
 print("""

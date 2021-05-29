@@ -18,14 +18,15 @@ class PreProcess:
 
     # Function to calculate the best hub among the given hubs to transfer package between given locations
     def CalculateBestHub(self, origin, Destination):
-        dist = 100000000
+        dist = 100000.00
         FinalHub = None
         for name, Hubs in CourierCompanies.items():
-            newD = (self.CalculateDistance(origin, Hubs['location'])['value']) + (self.CalculateDistance(Hubs['location'], Destination)['value'])
-            FinalHub = {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location']}
+            newD = float((self.CalculateDistance(origin, Hubs['location'])['value']) + (
+                self.CalculateDistance(Hubs['location'], Destination)['value'])) / 1000
             if dist > newD:
                 dist = newD
-        FinalHub['DistanceTravelled'] = dist/1000
+                FinalHub = {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],
+                            'DistanceTravelled': dist}
         return FinalHub
 
     # Function to Calculate Distance between Customer Origin & Customer Destination
