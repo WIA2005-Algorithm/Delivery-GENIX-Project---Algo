@@ -72,6 +72,7 @@ def AnalyseArticles():
         File.close()
 
 
+
 # Binary Search with an addition of O(n/2)
 # def binarySearch(wordlist, start, end, target):
 #     if start < end:
