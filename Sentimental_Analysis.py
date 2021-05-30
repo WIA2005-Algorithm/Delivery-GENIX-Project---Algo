@@ -1,3 +1,4 @@
+import RawData
 from RawData import Articles, stopwords
 import re
 
@@ -123,18 +124,10 @@ def AnalyseWordsCategories():
             else:
                 WordCategoryCount['neutral'].append(word)
         file['wordCategoryCount'] = WordCategoryCount
-        print(len(file['wordCategoryCount']['positive']),  "\t",len(file['wordCategoryCount']['negative']), "\t",len(file['wordCategoryCount']['neutral']))
 
 
-
-# Aiman Complete this function!! Check the rawdata.py to know where or how positive, negative words & neutral words are stored
-# Use variables to store result or print stateents
-# Conclude using the data, display number of words in each category...etc etc..
-# Apply these functions in order before running
-# AnalyseArticles()
-# AnalyseWordsCategories()
 def Conclusion():
-    for file in Articles.values():
-        for Category in file['wordCategoryCount']:
-            # if Category['postive'] blah blah ...
-            pass
+    RankValue = {}
+    for name, file in Articles.items():
+        RankValue[name] = len(file['wordCategoryCount']['positive']) - len(file['wordCategoryCount']['negative'])
+    return dict(sorted(RankValue.items(), key=lambda x: x[1], reverse=True))

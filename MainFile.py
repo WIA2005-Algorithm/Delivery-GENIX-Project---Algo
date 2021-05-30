@@ -1,13 +1,12 @@
+import collections
 import time
 
 from CusHubsMap import HubDeliveryMap, PreProcess
-from RawData import CourierCompanies, CustomerData
-# from Sentimental_Analysis import AnalyseArticles
+from RawData import CourierCompanies, CustomerData, Articles, Rank
+from Sentimental_Analysis import AnalyseArticles, AnalyseWordsCategories, Conclusion
 from Matplot import plotBarGraphs
 
 
-def Continue():
-    input("Please Enter Key to Continue....")
 
 
 print("""
@@ -45,42 +44,59 @@ Let us mark customer's origin as well as destination locations on map.
 We also will be marking Hub locations for future Use.
 """)
 print("Please wait while the resources load...APIs do take time sometime due to internet connection problems...")
-PreProcess()
+P = PreProcess()
 H = HubDeliveryMap()
-H2 = HubDeliveryMap(False)
-time.sleep(1)
 print("""
 *** Now Let's Mark a Direct Distance between the Customer Origin & Destination Locations ***\n
 """)
 H.MarkLeastDistantPath()
-time.sleep(1)
 for cus, detail in CustomerData.items():
-    print(f"Customer {cus} :->  {detail['Origin']['name']} <-> {detail['Destination']['name']} :> Distance = {detail['DirectDistance']} Km")
+    print(
+        f"Customer {cus} :->  {detail['Origin']['name']} <-> {detail['Destination']['name']} :> Distance = {detail['DirectDistance']} Km")
 
-time.sleep(1)
 print("""
 Alright, Time for Some Visuals... Let's Goo
 Hint: Click on the symbols to view more details
 """)
-Continue()
+input("Press Enter to visualize it...")
 print(H)
-Continue()
+input("Press Enter to continue...")
 print("""
 *** Welcome Back, Let's Continue***
 Oki, Time to decide the best hub out there...hihi
 """)
+P.PreProcessCustomerDeliveryHubs()
+H2 = HubDeliveryMap(False)
 H2.MarkRoutesHubs()
 for cus, detail in CustomerData.items():
-    print(f"According to the analytics :> Customer {cus} :->  {detail['Origin']['name']} <-> {detail['Destination']['name']} will use {detail['route']['Hub']} covering a total route distances of {detail['route']['DistanceTravelled']} Km")
+    print(
+        f"According to the analytics :> Customer {cus} :->  {detail['Origin']['name']} <-> {detail['Destination']['name']} will use {detail['route']['Hub']} covering a total route distances of {detail['route']['DistanceTravelled']} Km")
 
-time.sleep(1)
 print("""
 *** Let's Have a Look at it on the Map ***
 """)
-Continue()
+input("Press Enter to visualize it...")
 print(H2)
-Continue()
+AnalyseArticles()
+AnalyseWordsCategories()
+input("Press Enter to continue...")
 
-# Sentimental Analysis
-# AnalyseArticles()
-# plotBarGraphs()
+print(""" 
+Alright! Just to make sure, Making your parcel reach faster is not our only mission, We also ensure, your parcel reaches healthy & in good quality conditions
+Let's look at companies, having the highest review rates
+For an example, We took 3 articles from Internet about each company & collected the data to analyse it 
+""")
+print("Here's the frequency count for top 40 words in each article: - \n")
+for name, file in Articles.items():
+    print(name, " --> ", collections.Counter(file["wordFrequency"]).most_common(40))
+input("\nPress Enter to Plot Visualisation of bar graphs: ")
+plotBarGraphs()
+input("\nPress Enter to Continue: ")
+print("""
+After analysing the words for its count, We rank them based on their positive & negative review
+Here are the total results :-->
+""")
+c = 1
+for name, rank in Conclusion().items():
+    print(f"{name} has acquired a rank {c} among quality assurance with {'POSITIVE' if rank>=0 else 'NEGATIVE'} review")
+    c += 1

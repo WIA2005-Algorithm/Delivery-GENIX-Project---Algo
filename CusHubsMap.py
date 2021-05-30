@@ -9,7 +9,6 @@ class PreProcess:
         self.API_KEY = "AIzaSyCvn0ce0DhkRist0XmM4llOrwc6moS9ePc"
         self.DirectionsAPI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
         self.PreProcessDirectDistance()
-        self.PreProcessCustomerDeliveryHubs()
 
     # Common Function to Calculate Distance between 2 or 3 Locations
     def CalculateDistance(self, origin, destination):
@@ -101,5 +100,5 @@ class HubDeliveryMap:
 
     def __str__(self):
         self.Map.draw(self.HTML_PAGE)
-        webbrowser.open(self.HTML_PAGE, new=2)
-        return "Successfully Opened Page"
+        webbrowser.open(self.HTML_PAGE, new=1)
+        return "\nSuccessfully Opened Page In Web Browser\n"

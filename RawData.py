@@ -46,6 +46,8 @@ Articles = {
     }
 }
 
+Rank = {}
+
 stopwords = [
     "a", "about", "above", "across", "after", "afterwards", "again", "against", "all", "almost", "alone", "along",
     "already", "also", "although", "always", "am", "among", "amongst", "amoungst", "amount", "an", "and", "another",
