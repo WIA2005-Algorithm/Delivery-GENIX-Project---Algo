@@ -134,7 +134,20 @@ def AnalyseWordsCategories():
 # AnalyseArticles()
 # AnalyseWordsCategories()
 def Conclusion():
+    AnalyseArticles()
     for file in Articles.values():
         for Category in file['wordCategoryCount']:
-            # if Category['postive'] blah blah ...
-            pass
+             if Category['positive']:
+                temp = Category['positive']
+             elif Category['negative']:
+                temp2 = Category['negative']
+             else:
+                temp3 = Category['neutral']
+
+    AnalyseWordsCategories()
+    Print(temp.count())
+    Print(temp2.count())
+    Print(temp3.count())
+
+
+
