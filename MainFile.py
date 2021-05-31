@@ -3,7 +3,7 @@ import time
 
 from ConclusionPlot import PlotSentimentConclusion
 from CusHubsMap import HubDeliveryMap, PreProcess
-from RawData import CourierCompanies, CustomerData, Articles, Rank
+from RawData import CourierCompanies, CustomerData, Articles
 from Sentimental_Analysis import AnalyseArticles, AnalyseWordsCategories, Conclusion
 from Matplot import plotBarGraphs
 
