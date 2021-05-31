@@ -36,3 +36,4 @@ def plotBarGraphs():
 
         slider_position.on_changed(update)
         plt.show()
+

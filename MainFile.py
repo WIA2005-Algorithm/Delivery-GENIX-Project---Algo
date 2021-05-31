@@ -5,6 +5,7 @@ from CusHubsMap import HubDeliveryMap, PreProcess
 from RawData import CourierCompanies, CustomerData, Articles, Rank
 from Sentimental_Analysis import AnalyseArticles, AnalyseWordsCategories, Conclusion
 from Matplot import plotBarGraphs
+from Plot2 import plot2
 
 
 
@@ -89,8 +90,10 @@ For an example, We took 3 articles from Internet about each company & collected 
 print("Here's the frequency count for top 40 words in each article: - \n")
 for name, file in Articles.items():
     print(name, " --> ", collections.Counter(file["wordFrequency"]).most_common(40))
+    print( len(file['wordCategoryCount']['positive']))
 input("\nPress Enter to Plot Visualisation of bar graphs: ")
 plotBarGraphs()
+
 input("\nPress Enter to Continue: ")
 print("""
 After analysing the words for its count, We rank them based on their positive & negative review
@@ -100,3 +103,7 @@ c = 1
 for name, rank in Conclusion().items():
     print(f"{name} has acquired a rank {c} among quality assurance with {'POSITIVE' if rank>=0 else 'NEGATIVE'} review")
     c += 1
+
+
+
+plot2()

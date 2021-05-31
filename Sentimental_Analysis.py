@@ -126,8 +126,10 @@ def AnalyseWordsCategories():
         file['wordCategoryCount'] = WordCategoryCount
 
 
+
 def Conclusion():
     RankValue = {}
     for name, file in Articles.items():
         RankValue[name] = len(file['wordCategoryCount']['positive']) - len(file['wordCategoryCount']['negative'])
     return dict(sorted(RankValue.items(), key=lambda x: x[1], reverse=True))
+
