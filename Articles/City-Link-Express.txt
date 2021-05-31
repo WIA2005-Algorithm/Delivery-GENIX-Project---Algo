@@ -21,6 +21,7 @@ A million parcels are believed to be stuck in depots across the UK after courier
 The courier company has suffered from poor systems and an overcrowded market in recent years, due to the rise in online shopping.
 Customers who placed parcels with City Link on Christmas Eve for delivery have been urged to go to the depot to retrieve their parcels 'as soon as possible'.
 
+Customer's delivery expectations have also alarmed them to change over the years as Malaysia's leading online retail platforms, such as Lazada, Shopee, and Alibaba, have included transparency as part of the shopping experience. Traditional track-and-trace technologies are no longer sufficient to meet industry standards, as customers are demanding real-time last-mile visibility - from shipping fulfillment to location of drivers, and until the estimated time of arrival. Courier providers are adopting more smart technologies, such as GPS systems and postcode algorithms, which offer greater visibility over their operations, thereby increasing the efficiency of their delivery supply chain.
 A statement on City Link's website said: 'The business has ceased to accept new parcels from customers and its depots will remain open for a short period of time to enable customers or intended recipients to collect parcels.
 'Those customers who placed parcels with City Link on Christmas Eve for delivery are urged to go to the depot to retrieve their parcels as soon as possible.
 

@@ -1,13 +1,11 @@
 import collections
 import time
 
+from ConclusionPlot import PlotSentimentConclusion
 from CusHubsMap import HubDeliveryMap, PreProcess
 from RawData import CourierCompanies, CustomerData, Articles, Rank
 from Sentimental_Analysis import AnalyseArticles, AnalyseWordsCategories, Conclusion
 from Matplot import plotBarGraphs
-
-
-
 
 print("""
  \t\t\t*** WELCOME TO HUBS DELIVERY SERVICE APPLICATION ***
@@ -44,7 +42,7 @@ Let us mark customer's origin as well as destination locations on map.
 We also will be marking Hub locations for future Use.
 """)
 print("Please wait while the resources load...APIs do take time sometime due to internet connection problems...")
-P = PreProcess()
+PreProcess()
 H = HubDeliveryMap()
 print("""
 *** Now Let's Mark a Direct Distance between the Customer Origin & Destination Locations ***\n
@@ -65,7 +63,13 @@ print("""
 *** Welcome Back, Let's Continue***
 Oki, Time to decide the best hub out there...hihi
 """)
-P.PreProcessCustomerDeliveryHubs()
+for name, detail in CustomerData.items():
+    print(f"Customer {name} has these available options:- \n")
+    c = 1
+    for hub in detail["RouteRank"]:
+        print(f"Hub {hub['hub']} will take <{hub['DistanceTravelled']} Km> to transfer the parcel", "- BEST CHOICE" if c == 1 else "")
+        c += 1
+    print("")
 H2 = HubDeliveryMap(False)
 H2.MarkRoutesHubs()
 for cus, detail in CustomerData.items():
@@ -98,5 +102,9 @@ Here are the total results :-->
 """)
 c = 1
 for name, rank in Conclusion().items():
-    print(f"{name} has acquired a rank {c} among quality assurance with {'POSITIVE' if rank>=0 else 'NEGATIVE'} review")
+    print(
+        f"{name} has acquired a rank {c} among quality assurance with {'POSITIVE' if rank >= 0 else 'NEGATIVE'} review")
     c += 1
+print("Enter to initialise concluding graph...")
+PlotSentimentConclusion()
+

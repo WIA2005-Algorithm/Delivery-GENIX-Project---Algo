@@ -9,6 +9,7 @@ class PreProcess:
         self.API_KEY = "AIzaSyCvn0ce0DhkRist0XmM4llOrwc6moS9ePc"
         self.DirectionsAPI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
         self.PreProcessDirectDistance()
+        self.PreProcessCustomerDeliveryHubs()
 
     # Common Function to Calculate Distance between 2 or 3 Locations
     def CalculateDistance(self, origin, destination):
@@ -19,16 +20,16 @@ class PreProcess:
     def CalculateBestHub(self, origin, Destination):
         dist = 100000.00
         FinalHub = None
+        totalHubRank = []
         for name, Hubs in CourierCompanies.items():
             newD = float((self.CalculateDistance(origin, Hubs['location'])['value']) + (
                 self.CalculateDistance(Hubs['location'], Destination)['value'])) / 1000
+            totalHubRank.append({'hub': name, 'DistanceTravelled': newD})
             if dist > newD:
                 dist = newD
                 FinalHub = {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],
                             'DistanceTravelled': dist}
-            print(f"Hub {name} takes -  {newD} Km to transfer parcel")
-        print(f"Therefore, the best shortest distance is {dist} covered by {FinalHub['Hub']}\n")
-        return FinalHub
+        return FinalHub, sorted(totalHubRank, key=lambda x: x["DistanceTravelled"])
 
     # Function to Calculate Distance between Customer Origin & Customer Destination
     def PreProcessDirectDistance(self):
@@ -39,9 +40,8 @@ class PreProcess:
     # Function to Calculate Hubs each Customers will transfer there package from
     def PreProcessCustomerDeliveryHubs(self):
         for name, customer in CustomerData.items():
-            print(f"For Customer {name} - ")
-            customer['route'] = self.CalculateBestHub(customer["Origin"]["location"],
-                                                      customer["Destination"]["location"])
+            customer['route'], customer['RouteRank'] = self.CalculateBestHub(customer["Origin"]["location"],
+                                                                             customer["Destination"]["location"])
 
 
 class HubDeliveryMap:

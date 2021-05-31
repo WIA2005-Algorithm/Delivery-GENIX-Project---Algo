@@ -11,6 +11,9 @@ CustomerData = {
         "Origin": {"name": "Rawang", "location": (3.3615395462207878, 101.56318183511695)},
         "Destination": {"name": "Bukit Jelutong", "location": (3.1000170516638885, 101.53071480907951)},
         "color": '#194350'
+        # "DirectDistance": {"Text": '23 Km': "Value": 23000}
+        # "route": {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],'DistanceTravelled': dist}
+        # "RouteRank": [{"name": J&T, "DistanceTravelled": 233}, {...}, {...}, {...}, {...}]
     },
     "Wang Koii": {
         "Origin": {"name": "Subang Jaya", "location": (3.049398375759954, 101.58546611160301)},
@@ -46,7 +49,6 @@ Articles = {
     }
 }
 
-Rank = {}
 
 stopwords = [
     "a", "about", "above", "across", "after", "afterwards", "again", "against", "all", "almost", "alone", "along",
