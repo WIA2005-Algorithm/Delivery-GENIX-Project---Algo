@@ -1,4 +1,5 @@
 import webbrowser
+import Algorithms
 import gmplot
 import requests
 from RawData import CourierCompanies, CustomerData
@@ -18,18 +19,14 @@ class PreProcess:
 
     # Function to calculate the best hub among the given hubs to transfer package between given locations
     def CalculateBestHub(self, origin, Destination):
-        dist = 100000.00
-        FinalHub = None
-        totalHubRank = []
-        for name, Hubs in CourierCompanies.items():
-            newD = float((self.CalculateDistance(origin, Hubs['location'])['value']) + (
-                self.CalculateDistance(Hubs['location'], Destination)['value'])) / 1000
-            totalHubRank.append({'hub': name, 'DistanceTravelled': newD})
-            if dist > newD:
-                dist = newD
-                FinalHub = {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],
-                            'DistanceTravelled': dist}
-        return FinalHub, sorted(totalHubRank, key=lambda x: x["DistanceTravelled"])
+        HubRanks = Algorithms.QuickSortAlgo([{'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],
+                                              'DistanceTravelled': float(
+                                                  (self.CalculateDistance(origin, Hubs['location'])['value']) + (
+                                                      self.CalculateDistance(Hubs['location'], Destination)[
+                                                          'value'])) / 1000} for
+                                             name, Hubs in CourierCompanies.items()],
+                                            key=lambda x: x["DistanceTravelled"])
+        return HubRanks[0], HubRanks
 
     # Function to Calculate Distance between Customer Origin & Customer Destination
     def PreProcessDirectDistance(self):

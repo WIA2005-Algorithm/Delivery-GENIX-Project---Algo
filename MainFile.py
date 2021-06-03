@@ -1,6 +1,7 @@
 import collections
 import time
 
+import RawData
 from ConclusionPlot import PlotSentimentConclusion
 from CusHubsMap import HubDeliveryMap, PreProcess
 from RawData import CourierCompanies, CustomerData, Articles
@@ -67,7 +68,7 @@ for name, detail in CustomerData.items():
     print(f"Customer {name} has these available options:- \n")
     c = 1
     for hub in detail["RouteRank"]:
-        print(f"Hub {hub['hub']} will take <{hub['DistanceTravelled']} Km> to transfer the parcel", "- BEST CHOICE" if c == 1 else "")
+        print(f"Hub {hub['Hub']} will take <{hub['DistanceTravelled']} Km> to transfer the parcel", "- BEST CHOICE" if c == 1 else "")
         c += 1
     print("")
 H2 = HubDeliveryMap(False)
@@ -100,8 +101,9 @@ print("""
 After analysing the words for its count, We rank them based on their positive & negative review
 Here are the total results :-->
 """)
+RawData.RankedSentiments = Conclusion().items()
 c = 1
-for name, rank in Conclusion().items():
+for name, rank in RawData.RankedSentiments:
     print(
         f"{name} has acquired a rank {c} among quality assurance with {'POSITIVE' if rank >= 0 else 'NEGATIVE'} review")
     c += 1

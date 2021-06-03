@@ -49,6 +49,7 @@ Articles = {
     }
 }
 
+RankedSentiments = None
 
 stopwords = [
     "a", "about", "above", "across", "after", "afterwards", "again", "against", "all", "almost", "alone", "along",
