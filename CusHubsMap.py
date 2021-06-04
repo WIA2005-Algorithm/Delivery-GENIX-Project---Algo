@@ -26,6 +26,8 @@ class PreProcess:
                                                           'value'])) / 1000} for
                                              name, Hubs in CourierCompanies.items()],
                                             key=lambda x: x["DistanceTravelled"])
+        for i in range(len(HubRanks)):
+            HubRanks[i]['Recommended'] = '\u2705' if i == 0 else '\u274C'
         return HubRanks[0], HubRanks
 
     # Function to Calculate Distance between Customer Origin & Customer Destination

@@ -1,7 +1,7 @@
 CourierCompanies = {
-    "City-link Express": {"name": "Port Klang", "location": (3.0319924887507144, 101.37344116244806)},
-    "Pos Laju": {"name": "Petaling Jaya", "location": (3.112924170027219, 101.63982650389863)},
-    "GDEX ": {"name": "Batu Caves", "location": (3.265154613796736, 101.68024844550233)},
+    "City-Link-Express": {"name": "Port Klang", "location": (3.0319924887507144, 101.37344116244806)},
+    "Pos-Laju": {"name": "Petaling Jaya", "location": (3.112924170027219, 101.63982650389863)},
+    "GDEX": {"name": "Batu Caves", "location": (3.265154613796736, 101.68024844550233)},
     "J&T": {"name": "Kajang", "location": (2.9441205329488325, 101.7901521759029)},
     "DHL": {"name": "Sungai Buloh", "location": (3.2127230893650065, 101.57467295692778)}
 }
@@ -12,7 +12,8 @@ CustomerData = {
         "Destination": {"name": "Bukit Jelutong", "location": (3.1000170516638885, 101.53071480907951)},
         "color": '#194350'
         # "DirectDistance": {"Text": '23 Km': "Value": 23000}
-        # "route": {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],'DistanceTravelled': dist}
+        # "route": {'Hub': name, 'name': Hubs['name'], 'HubCoordinates': Hubs['location'],'DistanceTravelled': dist, 'FinalValue': [normDistance, normReview, FinalVal, rank, reconmended]}
+        # prev_route: {}
         # "RouteRank": [{"name": J&T, "DistanceTravelled": 233}, {...}, {...}, {...}, {...}]
     },
     "Wang Koii": {

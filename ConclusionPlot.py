@@ -14,7 +14,7 @@ def plotBar(axis, dictList, index, con):
     [axis.text(i, -5, con[i], color=green if con[i] == 'POSITIVE' else red, horizontalalignment='center',
                fontweight='heavy') for i in range(5)]
     axis.set_axisbelow(True)
-    axis.yaxis.grid(color='red', fontweight='bold')
+    axis.yaxis.grid(color='red')
 
 
 def initializeFigure(dic, index):

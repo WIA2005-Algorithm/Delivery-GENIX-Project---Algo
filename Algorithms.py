@@ -1,15 +1,15 @@
 from collections import abc
 
 
-def iMin(iterable, key=lambda x: x):
+def iMinMax(iterable, key=lambda x: x, Max=True):
     """returns largest item, as input could take iterator or sequence
     "key" function will be applied on every item, before comparison is made
     """
-    current_min = None
+    current = None
     for x in iterable:
-        if current_min is None or key(x) > key(current_min):
-            current_min = x
-    return current_min
+        if current is None or (key(x) > key(current) if Max else key(x) <= key(current)):
+            current = x
+    return key(current)
 
 
 # function to find the partition position
@@ -34,9 +34,11 @@ def quickSort(array, low, high, key, reverse):
 
 # helper function to sort list
 def QuickSortAlgo(iterable, key=lambda x: x, reverse=False):
-    newI = list(iterable) if isinstance(iterable, abc.ItemsView) else iterable
-    quickSort(newI, 0, len(newI) - 1, key=key, reverse=reverse)
-    return dict(newI) if isinstance(iterable, abc.ItemsView) else newI
+    dictionary = isinstance(iterable, abc.ItemsView)
+    if dictionary:
+        iterable = list(iterable)
+    quickSort(iterable, 0, len(iterable) - 1, key=key, reverse=reverse)
+    return dict(iterable) if dictionary else iterable
 
 
 # print(QuickSortAlgo({'a': 112, 'b': 12, 'c': 212, 'd': 14, 'e': 200}.items(), key=lambda x: x[1], reverse=True))
@@ -109,3 +111,41 @@ def BoyerMooreHorspool(words, pat):
         else:
             s += max(1, j - badChar[ord(words[s + j])])
     return FinalisedIndexes
+
+
+def NormaliseData(iterable, Hub=lambda x: x, key=lambda x: x):
+    """
+    Helper Function to calculate Normalised Value of the Iterable passed
+    based on Hub & Key
+    :TODO Normalised = value - min(all values) / max(all values) - min (all values), Will Convert to 0-1 Scale
+    """
+    Min = iMinMax(iterable, key=key, Max=False)
+    Sub = iMinMax(iterable, key=key) - Min
+    newIterable = {}
+    for x in iterable:
+        newIterable[Hub(x)] = (key(x) - Min) / Sub  # [{'Hub': 'normalised values'}, {...}, {...} ...]
+    return newIterable
+
+
+def NormaliseDataRanking(DistanceIterable, ReviewsIterable, Hub=lambda x: x, dist=lambda x: x, review=lambda x: x):
+    """
+        Function to calculate Normalised Value & Group Rank them based on Hub Distance
+        as well as Review Ratings based on Hub & Key
+        :param ReviewsIterable: List of Dictionaries of Hubs for Review Ranking - Dictionaries represet each hub
+        :param DistanceIterable: List of Dictionaries of Hubs for Distance Ranking - Dictionaries represet each hub
+        :param review: To access the review rating based on key
+        :param dist: To access the distance travelled based on key
+        :param Hub: To access the hub passed based on key
+        :return the sorted ranking of hubs based on Normalised/FinalValues based on both criterias
+    """
+    NDistance = NormaliseData(DistanceIterable, Hub=Hub, key=dist)
+    NReviews = NormaliseData(ReviewsIterable, Hub=Hub, key=review)
+    for normhub, routedHub in zip(NDistance.keys(), DistanceIterable):
+        routedHub['FinalDetails'] = [NDistance[normhub], NReviews[normhub],
+                                     (NDistance[normhub] + NReviews[normhub]) / 2]
+    DistanceIterable = QuickSortAlgo(DistanceIterable, key=lambda z: z['FinalDetails'][2])
+    c = 1
+    for detail in DistanceIterable:
+        detail['FinalDetails'].extend([c, '\u2705' if c == 1 else '\u274C'])
+        c += 1
+    return DistanceIterable

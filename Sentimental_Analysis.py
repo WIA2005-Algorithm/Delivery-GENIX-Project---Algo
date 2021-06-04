@@ -1,5 +1,4 @@
 import Algorithms
-import RawData
 from RawData import Articles, stopwords
 import re
 
@@ -65,9 +64,10 @@ def AnalyseWordsCategories():
 def Conclusion():
     RankValue = {}
     for name, file in Articles.items():
-        RankValue[name] = len(file['wordCategoryCount']['positive']) - len(file['wordCategoryCount']['negative'])
-    return Algorithms.QuickSortAlgo(RankValue.items(), key=lambda x: x[1], reverse=True)
-
-AnalyseArticles()
-AnalyseWordsCategories()
-Conclusion()
+        RankValue[name] = [len(file['wordCategoryCount']['negative']) - len(file['wordCategoryCount']['positive'])]
+    RankValue = Algorithms.QuickSortAlgo(RankValue.items(), key=lambda x: x[1])
+    c = 1
+    for detail in RankValue.values():
+        detail.extend([c, '\u2705' if c == 1 else '\u274C'])
+        c += 1
+    return RankValue
