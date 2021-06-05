@@ -102,6 +102,7 @@ def SentimentalPrint():
 def FinalConclusion():
     print("Based on the distance Analysis & Sentimental Analysis,\nFollowing is the data otained:-")
     for customer, detail in CustomerData.items():
+        print(f"Summary Table for Customer - {customer}")
         Final = NormaliseDataRanking(detail['RouteRank'], RawData.RankedSentiments, lambda x: x['Hub'],
                                      lambda y: y['DistanceTravelled'], lambda z: z['value'])
         detail['prev_route'], detail['route'] = detail['route'], Final[0]

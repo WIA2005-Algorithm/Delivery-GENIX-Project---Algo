@@ -138,11 +138,12 @@ def NormaliseDataRanking(DistanceIterable, ReviewsIterable, Hub=lambda x: x, dis
         :param Hub: To access the hub passed based on key
         :return the sorted ranking of hubs based on Normalised/FinalValues based on both criterias
     """
+    Distance_Weight, Review_Weight = 2, 1
     NDistance = NormaliseData(DistanceIterable, Hub=Hub, key=dist)
     NReviews = NormaliseData(ReviewsIterable, Hub=Hub, key=review)
     for normhub, routedHub in zip(NDistance.keys(), DistanceIterable):
         routedHub['FinalDetails'] = [NDistance[normhub], NReviews[normhub],
-                                     (NDistance[normhub] + NReviews[normhub]) / 2]
+                                     ((Distance_Weight * NDistance[normhub]) + (Review_Weight * NReviews[normhub])) / 2]
     DistanceIterable = QuickSortAlgo(DistanceIterable, key=lambda z: z['FinalDetails'][2])
     c = 1
     for detail in DistanceIterable:
