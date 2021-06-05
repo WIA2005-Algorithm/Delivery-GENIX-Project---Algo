@@ -56,7 +56,7 @@ def AvailableOptions():
         print(PrettyPrint(['Hub', 'Distance through Hub', 'Recommended Choice'], CusDetails['RouteRank'],
                           [lambda x: x['Hub'], lambda x: str(x['DistanceTravelled']) + ' Km',
                            lambda x: x['Recommended']]))
-    H2 = HubDeliveryMap(False)
+    H2 = HubDeliveryMap(False)  # I am going to mark route through hub
     H2.MarkRoutesHubs()
     print("\nBelow are the recomended choices based on the distance:-")
     print(PrettyPrint(['Customer', 'Origin', 'Destination', 'Hub Recommended', 'Distance (Km)'],
@@ -104,7 +104,7 @@ def FinalConclusion():
     for customer, detail in CustomerData.items():
         print(f"Summary Table for Customer - {customer}")
         Final = NormaliseDataRanking(detail['RouteRank'], RawData.RankedSentiments, lambda x: x['Hub'],
-                                     lambda y: y['DistanceTravelled'], lambda z: z['value'])
+                                     lambda x: x['DistanceTravelled'], lambda x: x['value'])
         detail['prev_route'], detail['route'] = detail['route'], Final[0]
         print(PrettyPrint(
             ['Hub', 'Distance Normalised', 'Reviews Normalised', 'Final Conclusion', 'Rank', 'Recomendation based'],
