@@ -127,20 +127,20 @@ def NormaliseData(iterable, Hub=lambda x: x, key=lambda x: x):
     return newIterable
 
 
-def NormaliseDataRanking(DistanceIterable, ReviewsIterable, Hub=lambda x: x, dist=lambda x: x, review=lambda x: x):
+def NormaliseDataRanking(DistanceIterable, ReviewsIterable, Hub=lambda x: x, Dist=lambda x: x, Review=lambda x: x):
     """
         Function to calculate Normalised Value & Group Rank them based on Hub Distance
         as well as Review Ratings based on Hub & Key
         :param ReviewsIterable: List of Dictionaries of Hubs for Review Ranking - Dictionaries represet each hub
         :param DistanceIterable: List of Dictionaries of Hubs for Distance Ranking - Dictionaries represet each hub
-        :param review: To access the review rating based on key
-        :param dist: To access the distance travelled based on key
+        :param Review: To access the review rating based on key
+        :param Dist: To access the distance travelled based on key
         :param Hub: To access the hub passed based on key
         :return the sorted ranking of hubs based on Normalised/FinalValues based on both criterias
     """
     Distance_Weight, Review_Weight = 2, 1
-    NDistance = NormaliseData(DistanceIterable, Hub=Hub, key=dist)
-    NReviews = NormaliseData(ReviewsIterable, Hub=Hub, key=review)
+    NDistance = NormaliseData(DistanceIterable, Hub=Hub, key=Dist)
+    NReviews = NormaliseData(ReviewsIterable, Hub=Hub, key=Review)
     for normhub, routedHub in zip(NDistance.keys(), DistanceIterable):
         routedHub['FinalDetails'] = [NDistance[normhub], NReviews[normhub],
                                      ((Distance_Weight * NDistance[normhub]) + (Review_Weight * NReviews[normhub])) / 2]
