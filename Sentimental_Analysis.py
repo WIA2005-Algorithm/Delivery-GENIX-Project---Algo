@@ -3,6 +3,7 @@ from RawData import Articles, stopwords
 import re
 
 
+# After Successful Search, Remove the words from the string at indices
 def removeWords(txt, indices, s):
     j = 0
     for i in indices:
@@ -22,6 +23,7 @@ def filterStopWords(textWordList):
     return textWordList.split()
 
 
+# Count Word Frequency
 def countWords(wordlist):
     freq = {}
     for word in wordlist:
