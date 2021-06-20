@@ -1,4 +1,6 @@
 import webbrowser
+
+import API_KEY
 import Algorithms
 import gmplot
 import requests
@@ -7,7 +9,7 @@ from RawData import CourierCompanies, CustomerData
 
 class PreProcess:
     def __init__(self):
-        self.API_KEY = "AIzaSyCvn0ce0DhkRist0XmM4llOrwc6moS9ePc"
+        self.API_KEY = API_KEY.API_KEY
         self.DirectionsAPI = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
         self.PreProcessDirectDistance()
         self.PreProcessCustomerDeliveryHubs()
