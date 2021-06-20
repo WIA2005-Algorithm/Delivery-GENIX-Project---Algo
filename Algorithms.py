@@ -64,10 +64,7 @@ def KMPSearch(pat, txt):
             j += 1
         if j == len(pat):
             return True
-        # mismatch after j matches
         elif i < len(txt) and pat[j] != txt[i]:
-            # Do not match lps[0..lps[j-1]] characters,
-            # they will match anyway
             if j != 0:
                 j = lps[j - 1]
             else:
@@ -84,32 +81,31 @@ def badCharHeuristic(string, size):
     Initialize all occurrence as -1
     In the loop of size, Fill the actual value of last occurrence
     """
-    badChar = [-1] * 256  # No of Characters
     for i in range(size):
         badChar[ord(string[i])] = i
     return badChar
 
 
 # Check the usuage for complete complexity Analysis
-def BoyerMooreHorspool(words, pat):
+def BoyerMooreHorspool(text, pat):
     FinalisedIndexes = []
     """
     A pattern searching function that uses Bad Character
     Heuristic of Boyer Moore Algorithm & return the indices
     """
     m = len(pat)
-    n = len(words)
+    n = len(text)
     badChar = badCharHeuristic(pat, m)
     s = 0
     while s <= n - m:
         j = m - 1
-        while j >= 0 and pat[j] == words[s + j]:
+        while j >= 0 and pat[j] == text[s + j]:
             j -= 1
         if j < 0:
             FinalisedIndexes.append(s)
-            s += (m - badChar[ord(words[s + m])] if s + m < n else 1)
+            s += (m - badChar[ord(text[s + m])] if s + m < n else 1)
         else:
-            s += max(1, j - badChar[ord(words[s + j])])
+            s += max(1, j - badChar[ord(text[s + j])])
     return FinalisedIndexes
 
 
@@ -142,6 +138,7 @@ def NormaliseDataRanking(DistanceIterable, ReviewsIterable, Hub=lambda x: x, Dis
     NDistance = NormaliseData(DistanceIterable, Hub=Hub, key=Dist)
     NReviews = NormaliseData(ReviewsIterable, Hub=Hub, key=Review)
     for normhub, routedHub in zip(NDistance.keys(), DistanceIterable):
+        # ADDING IN THE MAIN DISCTIONARY INSIDE RAWDATA.PY
         routedHub['FinalDetails'] = [NDistance[normhub], NReviews[normhub],
                                      ((Distance_Weight * NDistance[normhub]) + (Review_Weight * NReviews[normhub])) / 2]
     DistanceIterable = QuickSortAlgo(DistanceIterable, key=lambda z: z['FinalDetails'][2])
