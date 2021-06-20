@@ -1,5 +1,7 @@
 # DELIVERY GENIX APP
 ## General Documentation
+* Insert API KEY in CusHubsMap.py file
+* Located in the report (Appendix Section 5.2)
 __________
 ## Team Members:
 | NAME      | MATRIC NUMBER |
