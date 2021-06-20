@@ -34,8 +34,10 @@ as the result of sentiment analysis of related online articles.
 Assuming that video or audio from the news or customer feedback will be used to provide
 sentiment insights in the future, Dynamic Time Warping (DTW) is one of the algorithms that can
 potentially be used
-##PROJECT INITIALISATION
-<hr>
+__________
+
+
+## PROJECT INITIALISATION
 
 ### _Installing dependencies_
 
